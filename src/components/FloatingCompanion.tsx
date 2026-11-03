@@ -43,7 +43,6 @@ export default function FloatingCompanion() {
   const [mood, setMood] = useState<Mood>("happy");
   const [visible, setVisible] = useState(false);
   const lastTarget = useRef<Element | null>(null);
-  const lastSpokenAt = useRef(0);
   const showTimer = useRef<number | null>(null);
 
   useEffect(() => {
@@ -65,13 +64,11 @@ export default function FloatingCompanion() {
       if (!(raw instanceof Element)) return;
       const target = raw.closest("a, button, [role='button'], h1, h2, h3, [data-companion-label]");
       if (!target || target.closest(".floating-companion")) return;
-      const now = Date.now();
-      if (target === lastTarget.current || now - lastSpokenAt.current < 2200) return;
+      if (target === lastTarget.current) return;
       const next = describeTarget(target);
       if (!next) return;
 
       lastTarget.current = target;
-      lastSpokenAt.current = now;
       setComment(next.line);
       setMood(next.mood);
       setVisible(true);
