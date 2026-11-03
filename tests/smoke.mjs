@@ -1418,7 +1418,8 @@ async function runFinalAuditChecks() {
     assert.equal(doc.activeElement, imageButton, "image dialog failed to restore focus");
     imageButton.querySelector("img").dispatchEvent(new window.Event("error")); await tick(100);
     assert.ok(!imageButton.isConnected && doc.body.textContent.includes("Image unavailable"), "broken image remained interactive");
-    const certImg = doc.querySelector('img[src*="datacom-certificate.jpg"]');
+    const certImg = doc.querySelector('img[src*="datacom-certificate.png"]');
+    assert.ok(certImg, "Datacom certificate image is missing before fallback test");
     certImg.dispatchEvent(new window.Event("error")); await tick(100);
     assert.ok(!certImg.isConnected && doc.body.textContent.includes("Certificate image unavailable"), "broken certificate has no fallback");
     // Menu and command dialog may not remain open simultaneously.
