@@ -126,25 +126,20 @@ export default function SolarSystemIntro() {
       if(elapsed>=7900){
         const t=smooth((elapsed-7900)/1800);
         const globeR=Math.min(w,h)*.38;
-        ctx.save();ctx.globalAlpha=1-t*.35;
+        // Keep the globe as a transition layer; the accurate India map is supplied by OpenStreetMap below.
+        ctx.save();
+        ctx.globalAlpha=1-t*.35;
         const eg=ctx.createRadialGradient(cx-globeR*.3,cy-globeR*.35,globeR*.05,cx,cy,globeR);
         eg.addColorStop(0,"#45a9e5");eg.addColorStop(.62,"#0d4c86");eg.addColorStop(1,"#06172e");
-        ctx.fillStyle=eg;ctx.shadowColor="#36aaff";ctx.shadowBlur=55;ctx.beginPath();ctx.arc(cx,cy,globeR,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-        ctx.save();ctx.beginPath();ctx.arc(cx,cy,globeR,0,Math.PI*2);ctx.clip();
-        // Simplified continent silhouettes, then a highlighted India locator.
-        ctx.fillStyle="#5eaa76";ctx.beginPath();ctx.moveTo(cx-globeR*.55,cy-globeR*.3);ctx.lineTo(cx-globeR*.2,cy-globeR*.48);ctx.lineTo(cx+globeR*.05,cy-globeR*.28);ctx.lineTo(cx-globeR*.08,cy+globeR*.02);ctx.lineTo(cx-globeR*.3,cy+globeR*.2);ctx.lineTo(cx-globeR*.48,cy+.1*globeR);ctx.closePath();ctx.fill();
-        ctx.beginPath();ctx.moveTo(cx+globeR*.1,cy-globeR*.45);ctx.lineTo(cx+globeR*.48,cy-globeR*.28);ctx.lineTo(cx+globeR*.42,cy+globeR*.04);ctx.lineTo(cx+globeR*.2,cy+globeR*.14);ctx.lineTo(cx+globeR*.1,cy-globeR*.45);ctx.fill();
-        ctx.beginPath();ctx.moveTo(cx+globeR*.34,cy+globeR*.03);ctx.lineTo(cx+globeR*.46,cy+globeR*.17);ctx.lineTo(cx+globeR*.38,cy+globeR*.48);ctx.lineTo(cx+globeR*.25,cy+globeR*.29);ctx.fill();
-        const ix=cx+globeR*.18, iy=cy+globeR*.02;
-        ctx.fillStyle="#f2c77a";ctx.beginPath();ctx.moveTo(ix,iy-globeR*.13);ctx.lineTo(ix+globeR*.075,iy-globeR*.02);ctx.lineTo(ix+globeR*.035,iy+globeR*.2);ctx.lineTo(ix-globeR*.03,iy+globeR*.29);ctx.lineTo(ix-globeR*.075,iy+.04*globeR);ctx.closePath();ctx.fill();
-        ctx.restore();ctx.restore();
-        // Scanner ring and map transition
-        ctx.save();ctx.strokeStyle="rgba(118,220,255,.85)";ctx.lineWidth=1.5;ctx.setLineDash([4,7]);ctx.beginPath();ctx.arc(cx,cy,globeR*(.25+t*.9),0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+        ctx.fillStyle=eg;ctx.shadowColor="#36aaff";ctx.shadowBlur=55;ctx.beginPath();ctx.arc(cx,cy,globeR,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle="rgba(164,222,255,.75)";ctx.lineWidth=2;ctx.shadowBlur=0;ctx.beginPath();ctx.arc(cx,cy,globeR,0,Math.PI*2);ctx.stroke();
+        ctx.restore();
+        // A subtle locator pulse marks the Indian subcontinent before the real map takes over.
         if(t>.3){
-          const mapT=smooth((t-.3)/.7);
-          ctx.save();ctx.globalAlpha=mapT;ctx.translate(cx,cy);ctx.scale(1+mapT*2.2,1+mapT*2.2);ctx.translate(-cx,-cy);
-          ctx.fillStyle="#143f38";ctx.strokeStyle="#b5e4bd";ctx.lineWidth=2;
-          ctx.beginPath();ctx.moveTo(cx,cy-globeR*.15);ctx.lineTo(cx+globeR*.08,cy-globeR*.02);ctx.lineTo(cx+globeR*.04,cy+globeR*.2);ctx.lineTo(cx-globeR*.03,cy+globeR*.3);ctx.lineTo(cx-globeR*.09,cy+globeR*.03);ctx.closePath();ctx.fill();ctx.stroke();
+          const pulse=.5+.5*Math.sin(elapsed*.006);
+          ctx.save();ctx.globalAlpha=smooth((t-.3)/.7);
+          ctx.strokeStyle="rgba(130,224,255,"+(.55+pulse*.35)+")";ctx.lineWidth=2;
+          ctx.beginPath();ctx.arc(cx+globeR*.18,cy+globeR*.06,10+pulse*10,0,Math.PI*2);ctx.stroke();
           ctx.restore();
         }
       }
