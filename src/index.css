@@ -1034,88 +1034,122 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 @media (prefers-reduced-motion: reduce) { .buddy-3d, .buddy-sparkle, .mood-excited .arm-right { animation: none !important; } }
 
 
-/* Companion layout refinement: compact footprint and an always-accessible switch. */
+
+/* ───────────── Floating companion: compact, stacked, and accessible ───────────── */
 .floating-companion {
-  position: fixed !important;
-  z-index: 9999 !important;
-  right: max(12px, env(safe-area-inset-right)) !important;
-  bottom: max(12px, env(safe-area-inset-bottom)) !important;
-  width: 94px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 0 !important;
-  pointer-events: none !important;
+  position: fixed;
+  z-index: 9999;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  pointer-events: none;
   isolation: isolate;
 }
 .floating-companion .companion-presence {
-  order: 1 !important;
-  position: relative !important;
-  z-index: 1 !important;
-  width: 94px !important;
-  height: 88px !important;
-  display: grid !important;
-  place-items: end center !important;
-  overflow: visible !important;
-  pointer-events: none !important;
+  order: 1;
+  position: relative;
+  width: 116px;
+  height: 112px;
+  display: grid;
+  place-items: end center;
+  overflow: visible;
+  perspective: 700px;
+  pointer-events: none;
 }
 .floating-companion .buddy-3d {
-  transform: scale(.58) rotateY(-13deg) !important;
-  transform-origin: bottom center !important;
-  margin-bottom: -57px !important;
-  animation: buddy-hover-compact 3.8s ease-in-out infinite !important;
+  position: relative;
+  width: 116px;
+  height: 145px;
+  transform: scale(.70) rotateY(-13deg);
+  transform-origin: bottom center;
+  margin: 0;
+  animation: buddy-hover-final 4.2s ease-in-out infinite;
 }
-@keyframes buddy-hover-compact {
-  0%, 100% { transform: translate3d(0,0,0) scale(.58) rotateY(-13deg) rotateZ(-1deg); }
-  50% { transform: translate3d(0,-4px,0) scale(.58) rotateY(9deg) rotateZ(1deg); }
+@keyframes buddy-hover-final {
+  0%, 100% { transform: translate3d(0,0,0) scale(.70) rotateY(-13deg) rotateZ(-1deg); }
+  50% { transform: translate3d(0,-4px,0) scale(.70) rotateY(8deg) rotateZ(1deg); }
 }
 .floating-companion .companion-bubble {
-  position: absolute !important;
-  z-index: 3 !important;
-  right: 0 !important;
-  bottom: 82px !important;
-  width: min(224px, calc(100vw - 34px)) !important;
-  max-width: 224px !important;
-  padding: 9px 11px !important;
-  font-size: 11px !important;
-  line-height: 1.45 !important;
-  pointer-events: none !important;
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 108px;
+  width: min(250px, calc(100vw - 34px));
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  pointer-events: none;
 }
 .floating-companion .companion-toggle {
-  order: 2 !important;
-  position: relative !important;
-  z-index: 10 !important;
-  flex: 0 0 auto !important;
-  display: inline-flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  min-height: 30px !important;
-  margin: 0 !important;
-  white-space: nowrap !important;
-  box-shadow: 0 4px 18px rgba(0,0,0,.22) !important;
+  order: 2;
+  position: relative;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 11px;
+  white-space: nowrap;
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  box-shadow: 0 4px 18px rgba(0,0,0,.2);
+}
+.floating-companion .buddy-head { z-index: 7; }
+.floating-companion .buddy-body { z-index: 3; }
+.floating-companion .buddy-arm {
+  z-index: 5;
+  width: 18px;
+  height: 42px;
+  top: 80px;
+  border-radius: 12px 12px 10px 10px;
+  background: linear-gradient(90deg,#6d5878,#a092ad 55%,#887493);
+  box-shadow: inset 2px 1px 3px rgba(255,255,255,.22), 1px 3px 5px rgba(0,0,0,.12);
+}
+.floating-companion .arm-left { left: 12px; transform: rotate(17deg) translateZ(9px); }
+.floating-companion .arm-right { right: 11px; transform: rotate(-18deg) translateZ(9px); }
+.floating-companion .buddy-hand {
+  position: absolute;
+  left: 1px;
+  bottom: -7px;
+  width: 17px;
+  height: 17px;
+  border-radius: 45% 48% 50% 50%;
+  background: linear-gradient(145deg,#f4c7a4,#d99570);
+  box-shadow: inset 2px 1px 2px rgba(255,255,255,.32), 1px 2px 3px rgba(0,0,0,.14);
+}
+.floating-companion .arm-right .buddy-hand { left: auto; right: 1px; }
+.floating-companion .mood-excited .arm-right { animation: buddy-wave-final .65s ease-in-out 2; }
+@keyframes buddy-wave-final {
+  0%, 100% { transform: rotate(-18deg) translateZ(9px); }
+  50% { transform: rotate(-105deg) translateZ(9px); }
 }
 @media (max-width: 640px) {
   .floating-companion {
-    right: max(8px, env(safe-area-inset-right)) !important;
-    bottom: max(8px, env(safe-area-inset-bottom)) !important;
-    width: 82px !important;
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: 94px;
   }
   .floating-companion .companion-presence {
-    width: 82px !important;
-    height: 76px !important;
+    width: 94px;
+    height: 94px;
   }
   .floating-companion .buddy-3d {
-    transform: scale(.51) rotateY(-13deg) !important;
-    margin-bottom: -66px !important;
+    transform: scale(.59) rotateY(-13deg);
   }
-  @keyframes buddy-hover-compact {
-    0%, 100% { transform: translate3d(0,0,0) scale(.51) rotateY(-13deg) rotateZ(-1deg); }
-    50% { transform: translate3d(0,-3px,0) scale(.51) rotateY(9deg) rotateZ(1deg); }
+  @keyframes buddy-hover-final {
+    0%, 100% { transform: translate3d(0,0,0) scale(.59) rotateY(-13deg) rotateZ(-1deg); }
+    50% { transform: translate3d(0,-3px,0) scale(.59) rotateY(8deg) rotateZ(1deg); }
   }
   .floating-companion .companion-bubble {
-    bottom: 72px !important;
-    width: min(210px, calc(100vw - 24px)) !important;
+    bottom: 91px;
+    width: min(220px, calc(100vw - 24px));
   }
 }
 @media (prefers-reduced-motion: reduce) {
