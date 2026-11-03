@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Moon, Search, Sun } from "lucide-react";
+import { ArrowUpRight, Moon, Search, Sun, Terminal } from "lucide-react";
 import { LINKS, NAV_ITEMS, PILL_ITEMS } from "@/data/content";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { useTheme } from "@/hooks/useTheme";
@@ -97,7 +97,7 @@ export default function Navbar({
             aria-hidden="true"
             className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ui-tile"
           >
-            <span className="font-anton text-xl leading-none pt-0.5 select-none" style={{ color: ice }}>L</span>
+            <Terminal className="w-[21px] h-[21px]" strokeWidth={2.1} style={{ color: ice }} />
           </span>
           <span className="hidden sm:flex flex-col leading-none" aria-hidden="true">
             <span className="font-semibold tracking-[0.14em] text-sm uppercase text-white dark:text-white transition-colors">
