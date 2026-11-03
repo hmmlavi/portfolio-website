@@ -1288,3 +1288,163 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .site-shell::before { transition: none !important; }
 }
+
+
+/* ───────────────── CURSOR-REACTIVE ELEMENT MASCOT ─────────────────
+   An abstract little crystal made from layered CSS shapes — no human/avatar
+   silhouette, external model, canvas, or image asset. */
+.floating-companion .element-mascot {
+  --look-x: 0deg;
+  --look-y: 0deg;
+  --lean-x: 0px;
+  --lean-y: 0px;
+  position: relative;
+  width: 116px;
+  height: 116px;
+  transform-style: preserve-3d;
+  transform: translate3d(var(--lean-x), var(--lean-y), 0) rotateX(var(--look-y)) rotateY(var(--look-x));
+  transition: transform .16s ease-out;
+  animation: element-drift 4.8s ease-in-out infinite;
+  filter: drop-shadow(0 14px 14px rgba(20, 35, 55, .18));
+  pointer-events: none;
+}
+.element-shadow {
+  position: absolute;
+  left: 28px;
+  bottom: 7px;
+  width: 60px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgba(10, 20, 35, .22);
+  filter: blur(7px);
+  transform: rotateX(68deg);
+}
+.element-core {
+  position: absolute;
+  left: 27px;
+  top: 17px;
+  width: 64px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 48% 52% 44% 56% / 43% 43% 57% 57%;
+  background:
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.98) 0 5%, transparent 24%),
+    radial-gradient(ellipse at 72% 78%, rgba(89,120,177,.55), transparent 48%),
+    linear-gradient(145deg, #e8f7ff 0%, #9fc6e8 28%, #7c8fc5 62%, #c7b9eb 100%);
+  box-shadow: inset 8px 7px 13px rgba(255,255,255,.72), inset -9px -10px 16px rgba(49,63,113,.26), 0 12px 25px rgba(78,102,157,.25);
+  transform: translateZ(16px);
+}
+.element-facet {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+.facet-one {
+  inset: -4px 30px -8px -12px;
+  background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,0));
+  clip-path: polygon(0 0,100% 0,65% 100%,12% 78%);
+}
+.facet-two {
+  inset: 20px -10px -8px 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,.34), rgba(82,93,165,.16));
+  clip-path: polygon(15% 0,100% 0,85% 100%,0 78%);
+}
+.element-eye {
+  position: absolute;
+  top: 32px;
+  width: 5px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34445e;
+  box-shadow: 1px 1px 0 rgba(255,255,255,.65);
+  animation: element-blink 5.5s infinite;
+}
+.eye-one { left: 19px; }
+.eye-two { right: 19px; }
+.element-smile {
+  position: absolute;
+  left: 27px;
+  top: 43px;
+  width: 10px;
+  height: 6px;
+  border-bottom: 2px solid #52617d;
+  border-radius: 0 0 50% 50%;
+}
+.element-glint {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 8px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.75);
+  filter: blur(2px);
+  transform: rotate(32deg);
+}
+.element-orbit {
+  position: absolute;
+  left: 9px;
+  top: 29px;
+  width: 98px;
+  height: 52px;
+  border: 1px solid color-mix(in srgb, var(--accent) 58%, transparent);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.element-orbit-one {
+  transform: rotate(-24deg) rotateX(67deg) translateZ(5px);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 18%, transparent);
+  animation: orbit-turn 9s linear infinite;
+}
+.element-orbit-two {
+  left: 17px;
+  top: 22px;
+  width: 82px;
+  height: 68px;
+  border-color: color-mix(in srgb, var(--hue-violet) 56%, transparent);
+  border-style: dashed;
+  transform: rotate(48deg) rotateX(66deg) translateZ(-5px);
+  animation: orbit-turn 13s linear infinite reverse;
+}
+.element-satellite {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  border-radius: 35%;
+  background: linear-gradient(145deg, #fff, var(--hue-ice));
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 32%, transparent), inset 1px 1px 2px #fff;
+  transform: rotate(35deg) translateZ(24px);
+}
+.satellite-one { width: 12px; height: 12px; right: 9px; top: 18px; }
+.satellite-two { width: 7px; height: 7px; left: 9px; bottom: 25px; background: linear-gradient(145deg,#fff,var(--hue-violet)); }
+.element-spark {
+  position: absolute;
+  z-index: 5;
+  color: var(--accent);
+  text-shadow: 0 2px 12px color-mix(in srgb, var(--accent) 38%, transparent);
+  animation: element-twinkle 2.8s ease-in-out infinite;
+}
+.spark-one { right: 4px; top: 42px; font-size: 15px; }
+.spark-two { left: 7px; top: 11px; font-size: 13px; animation-delay: -1.2s; }
+@keyframes element-drift {
+  0%,100% { translate: 0 1px; }
+  50% { translate: 0 -7px; }
+}
+@keyframes orbit-turn { to { rotate: 360deg; } }
+@keyframes element-twinkle { 0%,100% { opacity:.38; scale:.78; } 50% { opacity:1; scale:1.12; } }
+@keyframes element-blink { 0%,46%,50%,100% { transform:scaleY(1); } 48% { transform:scaleY(.12); } }
+[data-theme="light"] .element-core {
+  background:
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.98) 0 5%, transparent 24%),
+    radial-gradient(ellipse at 72% 78%, rgba(82,112,166,.34), transparent 48%),
+    linear-gradient(145deg, #f4fbff 0%, #a9cbe7 30%, #899acb 65%, #d2c8ed 100%);
+}
+@media (max-width: 640px) {
+  .floating-companion .element-mascot { transform: scale(.82) rotateX(var(--look-y)) rotateY(var(--look-x)); transform-origin: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-companion .element-mascot,
+  .element-orbit, .element-spark, .element-eye { animation: none !important; transition: none !important; }
+}
