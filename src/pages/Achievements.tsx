@@ -129,7 +129,6 @@ export default function Achievements() {
       title="Recognition"
       accentTitle="and achievements"
       intro="Awards, representation and professional credentials, each with a verification link where one exists. Photographs appear only where I have the real image."
-      mascotPose="trophy"
     >
       {lb && <Lightbox img={lb} onClose={() => setLb(null)} />}
 

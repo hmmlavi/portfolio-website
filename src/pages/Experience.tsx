@@ -19,7 +19,6 @@ export default function Experience() {
       accentTitle="experience"
       icon={<BriefcaseBusiness className="w-5 h-5" style={{ color: mint }} aria-hidden="true" />}
       intro="The dated internship is listed separately from self-directed projects and selected public repositories."
-      mascotPose="work"
     >
       <div className="flex flex-col gap-8 relative">
         {/* spatial vertical connector */}
