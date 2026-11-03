@@ -2,52 +2,49 @@ import { useEffect, useRef, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 type Mood = "happy" | "curious" | "surprised" | "thinking" | "sleepy" | "cheeky" | "excited";
+type GuideEntry = { pattern: RegExp; title: string; detail: string; aside: string; mood: Mood };
 
 const STORAGE_KEY = "lakshit-companion-enabled";
 
-const reactions: Array<{ test: RegExp; lines: string[]; mood: Mood }> = [
-  { test: /project|case study|build|repo/i, mood: "excited", lines: ["A project gallery. My natural habitat is full of unfinished side quests.", "Built with code, coffee, and at least seventeen browser tabs.", "Go ahead, explore. I promise the bugs are mostly house-trained."] },
-  { test: /skill|technology|stack|tool/i, mood: "cheeky", lines: ["The tech stack. A carefully curated collection of things to learn next.", "So many tools, so little RAM. Relatable.", "Every developer has a favourite framework. This one has several."] },
-  { test: /about|who|lakshit|intro|profile/i, mood: "happy", lines: ["That's my human. Big ideas, bigger plans, too many open tabs.", "The About section: proof that even developers have to write about themselves.", "I know all the lore. I'm contractually allowed to share the highlights."] },
-  { test: /contact|email|message|hire|connect/i, mood: "surprised", lines: ["A potential collaboration? Let me put on my tiny professional hat.", "This button could start a very productive conversation. No pressure.", "Incoming opportunity detected. My excitement levels are unreasonable."] },
-  { test: /education|college|university|degree|study/i, mood: "thinking", lines: ["Education: the original long-running side quest.", "Loading knowledge... please do not unplug the student.", "A degree, deadlines, and the occasional existential debugging session."] },
-  { test: /github|contribution|commit|open source/i, mood: "excited", lines: ["GitHub! Where tiny green squares create disproportionate happiness.", "Remember: commit early, test often, blame the cache last.", "Open source: strangers politely arguing over semicolons. Beautiful."] },
-  { test: /achievement|award|winner|certificate/i, mood: "happy", lines: ["Achievement unlocked. I would do a victory dance, but I have tiny feet.", "Receipts for all that hard work. Respect.", "Look at that progress. Someone should add a celebratory sound effect."] },
-  { test: /faq|question|answer/i, mood: "curious", lines: ["Frequently asked questions. Finally, my kind of small talk.", "Ask away. I provide commentary; the human provides actual expertise."] },
+/** Only show useful, page-specific guidance. No random filler or invented claims. */
+const guide: GuideEntry[] = [
+  { pattern: /project|case study|repository|repo/i, title: "Projects", detail: "Browse selected builds, open a project for its details, or visit its source repository.", aside: "The code is more interesting than the commit messages.", mood: "curious" },
+  { pattern: /skill|technology|tech stack|tooling/i, title: "Technical skills", detail: "This section groups the languages, frameworks, and tools used across the projects.", aside: "A list is easy. Knowing when not to use a tool is the hard part.", mood: "thinking" },
+  { pattern: /about|profile|lakshit|introduction/i, title: "About", detail: "A quick overview of Lakshit's background, interests, and current direction.", aside: "Yes, developers are expected to write prose too.", mood: "cheeky" },
+  { pattern: /contact|email|message|hire|connect/i, title: "Contact", detail: "Use these links to reach out about work, collaboration, or a project.", aside: "Unlike a pull request, a message does not need a review.", mood: "happy" },
+  { pattern: /education|college|university|degree|study/i, title: "Education", detail: "Academic background and relevant learning milestones are listed here.", aside: "The syllabus was not consulted before adding this section.", mood: "thinking" },
+  { pattern: /github|contribution|commit|open source/i, title: "GitHub", detail: "Open the linked profile or repositories to inspect source code and project activity.", aside: "Green squares are not a substitute for readable code.", mood: "curious" },
+  { pattern: /achievement|award|winner|certificate/i, title: "Achievements", detail: "A record of competitions, certifications, and other documented milestones.", aside: "Claims are much better when they come with receipts.", mood: "happy" },
+  { pattern: /experience|internship|work history/i, title: "Experience", detail: "Review practical experience, responsibilities, and work completed.", aside: "Titles matter less than what actually shipped.", mood: "thinking" },
+  { pattern: /faq|question|answer/i, title: "FAQ", detail: "Answers to common questions about the portfolio and its work.", aside: "Because apparently the obvious still needs documentation.", mood: "cheeky" },
 ];
 
-const genericLines = [
-  "Interesting choice. Your cursor has excellent taste.",
-  "Giving this element attention? I see how it is.",
-  "I'm the unofficial tour guide. Tips are accepted in virtual snacks.",
-  "Plot twist: not everything on this page is clickable.",
-  "Cursor spotted. Activating my best angle.",
-];
-
-function getComment(target: Element): { line: string; mood: Mood } {
-  const label = [
+function describeTarget(target: Element): { line: string; mood: Mood } | null {
+  const text = [
     target.getAttribute("aria-label"),
     target.getAttribute("title"),
     target.getAttribute("data-companion-label"),
     target.textContent,
   ].filter(Boolean).join(" ").replace(/\s+/g, " ").trim().slice(0, 180);
-  const match = reactions.find((item) => item.test.test(label));
-  if (match) return { line: match.lines[Math.floor(Math.random() * match.lines.length)], mood: match.mood };
-  if (/^(BUTTON|A)$/i.test(target.tagName) || target.getAttribute("role") === "button") {
-    return { line: `“${label.slice(0, 42) || "That button"}” — bold move. I respect it.`, mood: "curious" };
+
+  const entry = guide.find((item) => item.pattern.test(text));
+  if (entry) return { line: `${entry.title}: ${entry.detail} ${entry.aside}`, mood: entry.mood };
+
+  const label = text.replace(/[“”"]/g, "").trim();
+  if (/^(BUTTON|A)$/i.test(target.tagName) && label.length > 2) {
+    return { line: `${label.slice(0, 56)} — opens the linked page or performs the labelled action.`, mood: "curious" };
   }
-  return { line: genericLines[Math.floor(Math.random() * genericLines.length)], mood: "cheeky" };
+  return null;
 }
 
 export default function FloatingCompanion() {
   const [enabled, setEnabled] = useState(true);
-  const [comment, setComment] = useState("Hey! I'm your tiny tour guide. Move around and I'll add commentary.");
+  const [comment, setComment] = useState("Move over a section or link for a short guide.");
   const [mood, setMood] = useState<Mood>("happy");
   const [visible, setVisible] = useState(false);
   const lastTarget = useRef<Element | null>(null);
   const lastSpokenAt = useRef(0);
   const showTimer = useRef<number | null>(null);
-  const idleTimer = useRef<number | null>(null);
 
   useEffect(() => {
     try {
@@ -60,41 +57,32 @@ export default function FloatingCompanion() {
     if (!enabled) {
       setVisible(false);
       if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-      if (idleTimer.current !== null) window.clearTimeout(idleTimer.current);
       return;
     }
 
     const onPointerOver = (event: PointerEvent) => {
       const raw = event.target;
       if (!(raw instanceof Element)) return;
-      const target = raw.closest("a, button, [role='button'], h1, h2, h3, .project-card, .skill-row, .funfact, [data-companion-label]");
+      const target = raw.closest("a, button, [role='button'], h1, h2, h3, [data-companion-label]");
       if (!target || target.closest(".floating-companion")) return;
       const now = Date.now();
-      if (target === lastTarget.current && now - lastSpokenAt.current < 6500) return;
-      if (now - lastSpokenAt.current < 2600) return;
+      if (target === lastTarget.current || now - lastSpokenAt.current < 2200) return;
+      const next = describeTarget(target);
+      if (!next) return;
 
       lastTarget.current = target;
       lastSpokenAt.current = now;
-      const next = getComment(target);
       setComment(next.line);
       setMood(next.mood);
       setVisible(true);
       if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-      showTimer.current = window.setTimeout(() => setVisible(false), 4800);
-      if (idleTimer.current !== null) window.clearTimeout(idleTimer.current);
-      idleTimer.current = window.setTimeout(() => {
-        setMood("sleepy");
-        setComment("It's quiet... I'll be over here recharging my pixels.");
-        setVisible(true);
-        showTimer.current = window.setTimeout(() => setVisible(false), 4000);
-      }, 24000);
+      showTimer.current = window.setTimeout(() => setVisible(false), 6200);
     };
 
     document.addEventListener("pointerover", onPointerOver, { passive: true });
     return () => {
       document.removeEventListener("pointerover", onPointerOver);
       if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-      if (idleTimer.current !== null) window.clearTimeout(idleTimer.current);
     };
   }, [enabled]);
 
@@ -116,7 +104,8 @@ export default function FloatingCompanion() {
               <span className="buddy-cheek cheek-left" /><span className="buddy-cheek cheek-right" />
               <span className="buddy-mouth" />
             </span>
-            <span className="buddy-arm arm-left" /><span className="buddy-arm arm-right" />
+            <span className="buddy-arm arm-left"><span className="buddy-hand" /></span>
+            <span className="buddy-arm arm-right"><span className="buddy-hand" /></span>
             <span className="buddy-foot foot-left" /><span className="buddy-foot foot-right" />
             <span className="buddy-sparkle">✦</span>
           </div>
