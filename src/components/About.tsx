@@ -2,11 +2,11 @@ import { AVAILABILITY, LINKS } from "@/data/content";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { Reveal } from "@/components/anim";
 import { useTheme } from "@/hooks/useTheme";
-import PageMascot from "@/components/PageMascot";
 import { accent } from "@/data/palette";
 import JourneyTimeline from "@/components/JourneyTimeline";
 import FunFacts from "@/components/FunFacts";
 import { cn } from "@/utils/cn";
+import PageMascot from "@/components/PageMascot";
 
 export default function About() {
   const { theme } = useTheme();
@@ -68,13 +68,13 @@ export default function About() {
 
           <div className="md:col-span-4 sticky top-32">
             <Reveal delay={300}>
+              <div className="mb-5"><PageMascot pose="ideas" compact /></div>
               <div className={cn(
-                "p-8 rounded-[32px] overflow-hidden relative about-focus-card",
+                "p-8 rounded-[32px] overflow-hidden relative",
                 "ui-surface"
               )}>
                  <div aria-hidden="true" className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-40 ambient-wash" />
                  
-                 <div className="about-mascot"><PageMascot pose="ideas" embedded /></div>
                  <p className="font-mono text-[10px] tracking-widest uppercase text-white/30 mb-6">Beyond code</p>
                  <ul className="space-y-6">
                    {[
