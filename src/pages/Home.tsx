@@ -72,6 +72,57 @@ export default function Home() {
     <div className="relative">
       <Hero />
 
+      {/* NASA's original interactive solar system — embedded, not recreated. */}
+      <section className="px-6 md:px-10 pt-8 pb-14 md:pb-16">
+        <div className="max-w-7xl mx-auto">
+          <Reveal revealOnScroll>
+            <div className="flex flex-wrap items-end justify-between gap-5 mb-6">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="font-mono text-[10px] tracking-[0.3em]" style={{ color: accent("ice", light) }}>01</span>
+                  <span className="h-px w-10" style={{ background: alpha(accent("ice", light), 0.45) }} />
+                  <p className="eyebrow" style={{ color: accent("ice", light) }}>explore the cosmos</p>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1]">The Solar System</h2>
+                <p className="mt-3 text-sm md:text-base text-white/55 max-w-2xl">
+                  Explore planets, moons, asteroids and real NASA missions in an interactive 3D experience, powered by NASA/JPL.
+                </p>
+              </div>
+              <a
+                href="https://eyes.nasa.gov/apps/solar-system/#/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-medium transition-colors link-sweep"
+                style={{ color: accent("ice", light) }}
+              >
+                Open NASA Eyes <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+              </a>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/15 bg-[#030711] shadow-2xl">
+              <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-white/10">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                  <span className="font-mono text-[10px] sm:text-xs tracking-[0.16em] text-white/65 truncate">NASA / JPL · EYES ON THE SOLAR SYSTEM</span>
+                </div>
+                <span className="font-mono text-[9px] tracking-wider text-white/35 shrink-0">INTERACTIVE 3D</span>
+              </div>
+              <iframe
+                title="NASA Eyes on the Solar System — interactive 3D explorer"
+                src="https://eyes.nasa.gov/apps/solar-system/#/home?embed=true"
+                className="block w-full h-[480px] sm:h-[560px] lg:h-[680px] border-0"
+                allow="accelerometer; autoplay; fullscreen; gyroscope"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+            <p className="mt-3 text-[10px] font-mono tracking-wide text-white/35">
+              Experience and mission data are provided by NASA/JPL. Requires an internet connection.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Selected work preview — the three flagship builds */}
       <section className="py-14 md:py-16 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
