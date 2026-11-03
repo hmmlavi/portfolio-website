@@ -21,8 +21,6 @@ import ParticleField from "@/components/ParticleField";
 import CommandPalette from "@/components/CommandPalette";
 import Toast from "@/components/Toast";
 import { LEGAL_DOCS } from "@/data/legal";
-import { NAV_ITEMS, PROJECTS } from "@/data/content";
-import { STUDIES } from "@/data/projectExtras";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { useInteractionEnhancements } from "@/hooks/useInteractionEnhancements";
 
