@@ -4,6 +4,7 @@ import { PROJECTS, SPOTLIGHT_PROJECTS } from "@/data/content";
 import { Reveal } from "@/components/anim";
 import ProjectCard from "@/components/ProjectCard";
 import { useTheme } from "@/hooks/useTheme";
+import PageMascot from "@/components/PageMascot";
 
 /** Flagship builds lead the archive in priority order; every other project
  *  keeps its original relative place. Nothing is removed or renamed. */
