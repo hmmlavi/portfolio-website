@@ -49,10 +49,10 @@ export default function SolarSystemIntro() {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) { setVisible(false); return; }
-    let frame = 0;
     let raf = 0;
     const start = performance.now();
     let lastStage = "";
+    let lastProgress = -1;
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.7);
       canvas.width = Math.floor(window.innerWidth * dpr);
@@ -69,7 +69,8 @@ export default function SolarSystemIntro() {
       const cx=w/2, cy=h/2;
       const nextStage: Stage = elapsed < 3500 ? "system" : elapsed < 5000 ? "scan" : elapsed < 7900 ? "earth" : elapsed < 10300 ? "india" : "done";
       if(nextStage!==lastStage){lastStage=nextStage;setStage(nextStage);}
-      setProgress(Math.round(p*100));
+      const nextProgress = Math.round(p*100);
+      if (nextProgress !== lastProgress && (nextProgress === 100 || nextProgress % 5 === 0)) { lastProgress = nextProgress; setProgress(nextProgress); }
       ctx.clearRect(0,0,w,h);
       const bg=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(w,h)*.8);
       bg.addColorStop(0,"#0b1830"); bg.addColorStop(.58,"#050a16"); bg.addColorStop(1,"#02040a");
@@ -91,7 +92,6 @@ export default function SolarSystemIntro() {
         {a:Math.min(w,h)*.55,r:10,c:["#a7e5ed","#3c859b"],t:"uranus"},
         {a:Math.min(w,h)*.62,r:10,c:["#8ca9ff","#263d9b"],t:"neptune"},
       ];
-      const systemT=1-smooth((elapsed-2600)/1100);
       const camera=smooth((elapsed-4800)/2100);
       const targetEarthR=Math.min(w,h)*.34;
       const baseEarthR=8;
@@ -101,7 +101,8 @@ export default function SolarSystemIntro() {
         const item=planets[i]; const orbit=item.a;
         ctx.strokeStyle="rgba(146,180,226,.14)";ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(cx,cy,orbit,orbit*.56,0,0,Math.PI*2);ctx.stroke();
         const angle=elapsed*.000045*(i%2?-1:1)+i*.8;
-        const x=cx+Math.cos(angle)*orbit, y=cy+Math.sin(angle)*orbit*.56;
+        const x=item.t === "earth" ? earthX : cx+Math.cos(angle)*orbit;
+        const y=item.t === "earth" ? earthY : cy+Math.sin(angle)*orbit*.56;
         if(item.t==="earth"){planet(ctx,x,y,8,item.c,"earth");}
         else planet(ctx,x,y,item.r,item.c,item.t);
       }
