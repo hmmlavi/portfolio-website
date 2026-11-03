@@ -79,14 +79,8 @@ function Site() {
   const currentPage = route.kind === "page" ? route.page : null;
 
   useEffect(() => {
-    let label: string | undefined;
-    if (route.kind === "page" && route.page !== "home") label = NAV_ITEMS.find(item => item.id === route.page)?.label;
-    else if (route.kind === "legal") label = legalDoc?.title;
-    else if (route.kind === "quick") label = "Quick view";
-    else if (route.kind === "case") label = STUDIES[route.repo] ? PROJECTS.find(p => p.repo === route.repo)?.spotlightLabel : "Page not found";
-    else if (route.kind === "notfound") label = "Page not found";
     document.title = "Lakshit Singh";
-  }, [route, legalDoc]);
+  }, [route]);
 
   return (
     <div
