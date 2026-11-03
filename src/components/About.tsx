@@ -2,6 +2,7 @@ import { AVAILABILITY, LINKS } from "@/data/content";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { Reveal } from "@/components/anim";
 import { useTheme } from "@/hooks/useTheme";
+import PageMascot from "@/components/PageMascot";
 import { accent } from "@/data/palette";
 import JourneyTimeline from "@/components/JourneyTimeline";
 import FunFacts from "@/components/FunFacts";
