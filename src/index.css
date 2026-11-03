@@ -1050,10 +1050,10 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
   isolation: isolate;
 }
 .floating-companion .companion-presence {
-  order: 1;
+  order: 0;
   position: relative;
   width: 116px;
-  height: 112px;
+  height: 116px;
   display: grid;
   place-items: end center;
   overflow: visible;
@@ -1085,7 +1085,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
   pointer-events: none;
 }
 .floating-companion .companion-toggle {
-  order: 2;
+  order: 1;
   position: relative;
   z-index: 30;
   display: inline-flex;
@@ -1138,7 +1138,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
   }
   .floating-companion .companion-presence {
     width: 94px;
-    height: 94px;
+    height: 98px;
   }
   .floating-companion .buddy-3d {
     transform: scale(.59) rotateY(-13deg);
