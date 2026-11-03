@@ -1315,3 +1315,50 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 .solar-intro-hud,.solar-intro-caption,.solar-intro-skip{z-index:3}
 @keyframes solar-map-arrive{0%{opacity:0;transform:scale(1.45);filter:blur(10px)}65%{opacity:.92;filter:blur(0)}100%{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.solar-india-map{animation:none;opacity:1;transform:none}}
+
+
+/* Cinematic space-scene finish and source credits */
+.solar-intro {
+  background: #010208;
+  isolation: isolate;
+}
+.solar-intro-canvas {
+  z-index: 1;
+}
+.solar-india-map {
+  z-index: 2;
+}
+.solar-intro-hud,
+.solar-intro-caption,
+.solar-intro-skip,
+.solar-nasa-credit {
+  z-index: 4;
+}
+.solar-map-credit {
+  z-index: 5;
+}
+.solar-map-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.solar-nasa-credit {
+  position: absolute;
+  left: 14px;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  color: rgba(193, 216, 244, .48);
+  font: 9px/1.4 "JetBrains Mono", monospace;
+  letter-spacing: .035em;
+  pointer-events: none;
+}
+.solar-intro-caption {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .85);
+}
+@media (max-width: 640px) {
+  .solar-nasa-credit {
+    left: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    max-width: 58%;
+    font-size: 8px;
+  }
+}
