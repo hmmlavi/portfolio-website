@@ -85,7 +85,7 @@ function Site() {
     else if (route.kind === "quick") label = "Quick view";
     else if (route.kind === "case") label = STUDIES[route.repo] ? PROJECTS.find(p => p.repo === route.repo)?.spotlightLabel : "Page not found";
     else if (route.kind === "notfound") label = "Page not found";
-    document.title = label ? `${label} — Lakshit Singh Saini` : "Lakshit Singh Saini — Computer Science Student & Developer";
+    document.title = "Lakshit Singh";
   }, [route, legalDoc]);
 
   return (
