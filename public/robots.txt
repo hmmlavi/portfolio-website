@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# No sitemap is advertised: this repository has no verified production domain,
-# and every route is a hash fragment on the single index.html document.
+Sitemap: https://lakshitss.vercel.app/sitemap.xml
