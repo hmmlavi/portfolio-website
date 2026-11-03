@@ -80,7 +80,7 @@ const hasColor = (markup, hex) => {
 };
 
 const assertThemeColour = (doc, theme) => {
-  const expected = theme === "light" ? "#f2f5f9" : "#0b0f17";
+  const expected = theme === "light" ? "#f2f5f9" : "#07090e";
   const metas = [...doc.querySelectorAll('meta[name="theme-color"]')];
   assert.ok(metas.length >= 1, "theme-color metadata is missing");
   for (const meta of metas) {
