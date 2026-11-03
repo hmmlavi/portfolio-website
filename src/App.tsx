@@ -9,6 +9,7 @@ import Exploring from "@/components/Exploring";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
+import FloatingCompanion from "@/components/FloatingCompanion";
 import Home from "@/pages/Home";
 import Education from "@/pages/Education";
 import Experience from "@/pages/Experience";
@@ -92,6 +93,7 @@ function Site() {
       }}>Skip to content</a>
       <ParticleField />
       <Cursor />
+      <FloatingCompanion />
       <CommandPalette onNavigate={go} />
       <Toast />
 
