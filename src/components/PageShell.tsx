@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/anim";
-import PageMascot from "@/components/PageMascot";
 
 /**
  * Shared page chrome: consistent top offset for the fixed nav, eyebrow,
@@ -16,7 +15,6 @@ export default function PageShell({
   intro,
   icon,
   children,
-  mascotPose,
 }: {
   id: string;
   eyebrow: string;
@@ -25,7 +23,6 @@ export default function PageShell({
   intro?: string;
   icon?: ReactNode;
   children: ReactNode;
-  mascotPose?: "trophy" | "learning" | "work";
 }) {
   return (
     <section
@@ -38,7 +35,7 @@ export default function PageShell({
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        <Reveal className="mb-14 md:mb-18 page-shell-heading">
+        <Reveal className="mb-14 md:mb-18">
           <div className="flex items-center gap-3 mb-4">
             {icon}
             <p className="eyebrow">{eyebrow}</p>
@@ -46,7 +43,6 @@ export default function PageShell({
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
             {title} {accentTitle && <span className="shimmer-text">{accentTitle}</span>}
           </h1>
-          {mascotPose && <div className="page-shell-mascot"><PageMascot pose={mascotPose} embedded /></div>}
           {intro && (
             <p className="mt-5 text-sm md:text-base text-white/60 leading-relaxed max-w-2xl">{intro}</p>
           )}

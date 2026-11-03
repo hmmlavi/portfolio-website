@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Cpu } from "lucide-react";
-import PageMascot from "@/components/PageMascot";
 import { AVAILABILITY, HERO_STATS } from "@/data/content";
 import { Magnetic, Reveal } from "@/components/anim";
 import { prefersReducedMotion } from "@/hooks/useInView";
@@ -41,7 +40,7 @@ function InterestPanel() {
         <div className="idea-visual relative flex items-center justify-center mx-auto mb-7" aria-hidden="true">
           <span className="idea-orbit idea-orbit-one" />
           <span className="idea-orbit idea-orbit-two" />
-          <PageMascot pose="coding" embedded />
+          <span className="idea-core">{interest.code}</span>
           <span className="idea-spark idea-spark-one" />
           <span className="idea-spark idea-spark-two" />
         </div>
