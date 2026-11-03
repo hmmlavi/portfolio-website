@@ -5,6 +5,7 @@ import { COURSEWORK, EDUCATION, EXPLORING } from "@/data/content";
 import { useTheme } from "@/hooks/useTheme";
 import { accent, colorFor } from "@/data/palette";
 import { cn } from "@/utils/cn";
+import PageMascot from "@/components/PageMascot";
 
 export default function Education() {
   const { theme } = useTheme();
@@ -20,6 +21,7 @@ export default function Education() {
       icon={<GraduationCap className="w-5 h-5" style={{ color: ice }} aria-hidden="true" />}
       intro="Foundational systems thinking and technical discipline from my degree, reinforced by independent builds."
     >
+      <div className="flex justify-end -mt-8 mb-4"><PageMascot pose="learning" compact /></div>
       <div className="flex flex-col gap-10">
         {EDUCATION.map((e, i) => {
           const c = colorFor(e.color, e.colorLight, light);
