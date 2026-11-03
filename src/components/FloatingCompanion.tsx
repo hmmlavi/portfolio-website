@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
-type Mood = "happy" | "curious" | "surprised" | "thinking" | "sleepy" | "cheeky";
+type Mood = "happy" | "curious" | "surprised" | "thinking" | "sleepy" | "cheeky" | "excited";
 
 const STORAGE_KEY = "lakshit-companion-enabled";
 
 const jokes: Array<{ test: RegExp; lines: string[]; mood: Mood }> = [
-  { test: /project|case study|build|repo/i, mood: "excited" as Mood, lines: ["Oho, project section! Yahan meri creator ne kaafi tabs khol rakhe the.", "Code dekh lo, bas bugs ko ghar mat le jaana.", "Is project ke peeche caffeine aur questionable sleep schedule hai."] },
+  { test: /project|case study|build|repo/i, mood: "excited", lines: ["Oho, project section! Yahan meri creator ne kaafi tabs khol rakhe the.", "Code dekh lo, bas bugs ko ghar mat le jaana.", "Is project ke peeche caffeine aur questionable sleep schedule hai."] },
   { test: /skill|technology|stack|tool/i, mood: "cheeky", lines: ["Skills! Inmein se kuch kaam ke hain, kuch resume ko confident banate hain.", "Tech stack dekh ke lagta hai install karne mein hi weekend nikal gaya.", "Ek aur technology? Lakshit ka browser tab count already danger zone mein hai."] },
   { test: /about|who|lakshit|intro|profile/i, mood: "happy", lines: ["Ye raha mera human. Thoda ambitious, thoda tab-hoarder.", "About section: carefully written, overthought at least 17 times.", "Main iske baare mein bata sakta hoon, par chai pilani padegi."] },
   { test: /contact|email|message|hire|connect/i, mood: "surprised", lines: ["Contact! Finally, koi inbox mein kaam ki cheez bhejega.", "Message bhej do. Main inbox ke bahar emotional support dunga.", "Professional baat-cheet yahin se shuru hoti hai. Main chup ho jaata hoon."] },
