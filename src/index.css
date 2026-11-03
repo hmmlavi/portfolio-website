@@ -171,7 +171,7 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--site-bg);
-  color: var(--site-fg);
+  color: var(--site-fg, #eef2ff);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -208,7 +208,7 @@ body {
 @layer components {
   .glass, .ui-surface {
     background: var(--glass-bg);
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255,255,255,.12);
     box-shadow: var(--shadow-md), inset 0 1px 0 var(--highlight);
     backdrop-filter: blur(22px) saturate(1.45);
     -webkit-backdrop-filter: blur(22px) saturate(1.45);
@@ -952,7 +952,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 .project-study-link { align-self: flex-start; }
 .home-skill-card { border-top: 2px solid var(--card-accent); background-color: color-mix(in srgb, var(--card-accent) 6%, var(--glass-bg)); }
 .case-header { border-left: 3px solid var(--project-accent); padding-left: clamp(1rem, 3vw, 2rem); }
-.architecture-panel { border-color: color-mix(in srgb, var(--project-accent) 45%, var(--line)); }
+.architecture-panel { border-color: color-mix(in srgb, var(--project-accent) 45%, rgba(255,255,255,.12)); }
 .architecture-panel .architecture-step button[aria-pressed="true"] { border-color: var(--project-accent); color: var(--project-accent); }
 .architecture-panel .architecture-arrow.active { color: var(--project-accent); }
 .quick-card { border-top: 2px solid var(--hue-ice); }
@@ -996,7 +996,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
   position: relative; isolation: isolate; width: min(100%, 350px); min-height: 218px;
   margin: 10px auto 28px; padding: 18px 20px 13px; border-radius: 26px;
   border: 1px solid color-mix(in srgb, var(--mascot-accent) 22%, var(--line));
-  background: radial-gradient(ellipse at 75% 15%, color-mix(in srgb, var(--mascot-accent) 16%, transparent), transparent 58%), var(--surface);
+  background: radial-gradient(ellipse at 75% 15%, color-mix(in srgb, var(--mascot-accent) 16%, transparent), transparent 58%), var(--site-bg, #101522);
   box-shadow: 0 18px 50px rgba(0,0,0,.12), inset 0 1px rgba(255,255,255,.16);
   overflow: hidden; transform: translateZ(0); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
 }
@@ -1007,7 +1007,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 .mascot-orbit--one { width: 190px; height: 190px; right: -50px; top: -82px; }
 .mascot-orbit--two { width: 125px; height: 125px; left: -46px; bottom: -70px; }
 .mascot-float-tag { position: absolute; z-index: 2; top: 15px; left: 16px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; color: var(--site-fg); background: color-mix(in srgb, var(--surface) 82%, transparent); border: 1px solid var(--line); font: 700 8px/1 var(--font-mono); letter-spacing: .12em; }
-.mascot-caption { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: -2px; color: var(--muted); font: 500 10px/1.4 var(--font-mono); letter-spacing: .04em; }
+.mascot-caption { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: -2px; color: rgba(220,228,245,.62); font: 500 10px/1.4 var(--font-mono); letter-spacing: .04em; }
 .mascot-caption-dot { width: 6px; height: 6px; border-radius: 50%; box-shadow: 0 0 12px currentColor; }
 .page-mascot--trophy { --mascot-accent: #e7b65d; }
 .page-mascot--building { --mascot-accent: #69c8b2; }
