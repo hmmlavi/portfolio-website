@@ -78,8 +78,11 @@ function Site() {
   const currentPage = route.kind === "page" ? route.page : null;
 
   useEffect(() => {
-    document.title = "Lakshit Singh";
-  }, [route]);
+    const pageTitle = currentPage
+      ? currentPage.charAt(0).toUpperCase() + currentPage.slice(1)
+      : "Lakshit Singh";
+    document.title = pageTitle === "Home" ? "Lakshit Singh" : `${pageTitle} | Lakshit Singh`;
+  }, [route, currentPage]);
 
   return (
     <div
