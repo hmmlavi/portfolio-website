@@ -8,7 +8,7 @@ export const LINKS = {
   /** A Drive FOLDER, not a PDF — every label must say "folder". */
   resume:
     "https://drive.google.com/drive/folders/1w-3xXPftM9oVKjTJ1_Mkifsh0h4H-3E9",
-  resumeLabel: "Open résumé folder",
+  resumeLabel: "Resume",
   email: "lakshitsinghsaini@gmail.com",
   // Public username from the owner’s earlier portfolio; not an invite URL.
   discordUsername: "hmmlavi",
