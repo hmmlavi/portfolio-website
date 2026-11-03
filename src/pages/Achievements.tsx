@@ -13,7 +13,6 @@ import {
   type CertItem,
 } from "@/data/achievements";
 import { cn } from "@/utils/cn";
-import PageMascot from "@/components/PageMascot";
 
 /* ──────────────────────── shared helpers ──────────────────────── */
 
@@ -130,8 +129,8 @@ export default function Achievements() {
       title="Recognition"
       accentTitle="and achievements"
       intro="Awards, representation and professional credentials, each with a verification link where one exists. Photographs appear only where I have the real image."
+      mascotPose="trophy"
     >
-      <div className="flex justify-end -mt-8 mb-6"><PageMascot pose="trophy" compact /></div>
       {lb && <Lightbox img={lb} onClose={() => setLb(null)} />}
 
       <div className="space-y-20 md:space-y-24">

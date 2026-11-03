@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowUpRight, Boxes, Cpu, Globe, Medal, Smartphone } from "lucide-react";
 import Hero from "@/components/Hero";
-import PageMascot from "@/components/PageMascot";
 import { Magnetic, Reveal } from "@/components/anim";
 import {
   ACHIEVEMENTS_PREVIEW, AVAILABILITY, CAPABILITIES, LINKS, SPOTLIGHT_PROJECTS,
@@ -72,7 +71,6 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
-      <div className="px-6 md:px-10 flex justify-center -mt-3 mb-8"><PageMascot pose="coding" /></div>
 
       {/* Selected work preview — the three flagship builds */}
       <section className="py-14 md:py-16 px-6 md:px-10">
