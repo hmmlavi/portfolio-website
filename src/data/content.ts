@@ -5,7 +5,7 @@ export const LINKS = {
   linkedin: "https://www.linkedin.com/in/lakshitsinghsaini/",
   instagram: "https://www.instagram.com/lakshitsinghsaini/",
   x: "https://x.com/Lakshits27",
-  /** A Drive FOLDER, not a PDF — every label must say "folder". */
+  /** Public resume link. */
   resume:
     "https://drive.google.com/drive/folders/1w-3xXPftM9oVKjTJ1_Mkifsh0h4H-3E9",
   resumeLabel: "Resume",
@@ -487,6 +487,6 @@ export const FAQS = [
   },
   {
     q: "Where can I find your résumé?",
-    a: "The résumé link opens a Google Drive folder that holds my shareable documents. There is no separate public PDF link on this site, so the folder is the current source.",
+    a: "The Resume link opens my shareable documents.",
   },
 ];
