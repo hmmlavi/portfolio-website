@@ -19,7 +19,6 @@ export default function Education() {
       accentTitle="education"
       icon={<GraduationCap className="w-5 h-5" style={{ color: ice }} aria-hidden="true" />}
       intro="Foundational systems thinking and technical discipline from my degree, reinforced by independent builds."
-      mascotPose="learning"
     >
       <div className="flex flex-col gap-10">
         {EDUCATION.map((e, i) => {
