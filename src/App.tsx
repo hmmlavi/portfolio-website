@@ -9,6 +9,7 @@ import Exploring from "@/components/Exploring";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
+import FloatingCompanion from "@/components/FloatingCompanion";
 import Home from "@/pages/Home";
 import Education from "@/pages/Education";
 import Experience from "@/pages/Experience";
@@ -77,8 +78,11 @@ function Site() {
   const currentPage = route.kind === "page" ? route.page : null;
 
   useEffect(() => {
-    document.title = "Lakshit Singh";
-  }, [route]);
+    const pageTitle = currentPage
+      ? currentPage.charAt(0).toUpperCase() + currentPage.slice(1)
+      : "Lakshit Singh";
+    document.title = pageTitle === "Home" ? "Lakshit Singh" : `${pageTitle} | Lakshit Singh`;
+  }, [route, currentPage]);
 
   return (
     <div
@@ -92,6 +96,7 @@ function Site() {
       }}>Skip to content</a>
       <ParticleField />
       <Cursor />
+      <FloatingCompanion />
       <CommandPalette onNavigate={go} />
       <Toast />
 
