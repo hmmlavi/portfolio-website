@@ -23,7 +23,7 @@ export default function Projects() {
   return (
     <section id="projects" className="pt-28 md:pt-32 pb-20 md:pb-24 px-6 md:px-10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
-        <Reveal className="mb-14 project-page-heading">
+        <Reveal className="mb-14">
           <p className="eyebrow mb-4">selected work</p>
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-4">Projects</h1>
           <p className="text-white/50 dark:text-white/40 text-lg leading-relaxed max-w-lg">
@@ -32,9 +32,9 @@ export default function Projects() {
           <p className="mt-4 font-mono text-[10px] tracking-[0.12em] text-white/40">
             // 03 flagship builds first · 07 repositories in total
           </p>
-          <div className="project-page-mascot"><PageMascot pose="building" embedded /></div>
         </Reveal>
 
+        <div className="flex justify-end -mt-8 mb-2"><PageMascot pose="building" compact /></div>
         <div className="mb-8 space-y-4" role="group" aria-label="Filter projects">
           <label className="block text-sm font-medium" htmlFor="project-search">Search projects</label>
           <input id="project-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Name, technology or category" className="ui-input w-full max-w-lg rounded-xl px-4 py-3" />
