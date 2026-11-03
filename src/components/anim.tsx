@@ -2,12 +2,7 @@ import { useRef, type CSSProperties, type ReactNode } from "react";
 import { isFinePointer, prefersReducedMotion } from "@/hooks/useInView";
 
 /**
- * Reveal — renders children IMMEDIATELY so content is always readable.
- *
- * `revealOnScroll` opts a wrapper into a subtle, staggered entrance driven by
- * useScrollReveals() + IntersectionObserver. Nothing is hidden before JS
- * runs, and reduced-motion users get no animation at all. `delay` becomes the
- * animation delay, which keeps the staggered reveals feeling intentional.
+ * Reveal — layout wrapper only. Entrance animations are removed site-wide.
  */
 export function Reveal({
   children,
@@ -27,8 +22,6 @@ export function Reveal({
   return (
     <Tag
       className={className}
-      data-scroll-reveal={revealOnScroll ? "pending" : undefined}
-      style={revealOnScroll ? { animationDelay: `${delay}ms` } : undefined}
     >
       {children}
     </Tag>
