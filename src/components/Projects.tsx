@@ -4,6 +4,7 @@ import { PROJECTS, SPOTLIGHT_PROJECTS } from "@/data/content";
 import { Reveal } from "@/components/anim";
 import ProjectCard from "@/components/ProjectCard";
 import { useTheme } from "@/hooks/useTheme";
+import PageMascot from "@/components/PageMascot";
 
 /** Flagship builds lead the archive in priority order; every other project
  *  keeps its original relative place. Nothing is removed or renamed. */
@@ -33,6 +34,7 @@ export default function Projects() {
           </p>
         </Reveal>
 
+        <div className="flex justify-end -mt-8 mb-2"><PageMascot pose="building" compact /></div>
         <div className="mb-8 space-y-4" role="group" aria-label="Filter projects">
           <label className="block text-sm font-medium" htmlFor="project-search">Search projects</label>
           <input id="project-search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Name, technology or category" className="ui-input w-full max-w-lg rounded-xl px-4 py-3" />
