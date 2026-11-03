@@ -11,11 +11,11 @@ const scenes: Record<MascotPose, { label: string; line: string; Icon: typeof Cod
   ideas: { label: "WHAT IF…", line: "ideas welcome.", Icon: Lightbulb, accent: "#e9a5b7" },
 };
 
-export default function PageMascot({ pose = "coding", compact = false }: { pose?: MascotPose; compact?: boolean }) {
+export default function PageMascot({ pose = "coding", compact = false, embedded = false }: { pose?: MascotPose; compact?: boolean; embedded?: boolean }) {
   const scene = scenes[pose];
   const Prop = scene.Icon;
   return (
-    <aside className={`page-mascot page-mascot--${pose}${compact ? " page-mascot--compact" : ""}`} aria-label={`Illustrated mascot: ${scene.label.toLowerCase()}`}>
+    <aside className={`page-mascot page-mascot--${pose}${compact ? " page-mascot--compact" : ""}${embedded ? " page-mascot--embedded" : ""}`} aria-label={`Illustrated mascot: ${scene.label.toLowerCase()}`}>
       <div className="mascot-orbit mascot-orbit--one" aria-hidden="true" />
       <div className="mascot-orbit mascot-orbit--two" aria-hidden="true" />
       <div className="mascot-float-tag"><Sparkles size={12} /> {scene.label}</div>
