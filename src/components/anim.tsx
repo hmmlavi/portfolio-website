@@ -6,11 +6,8 @@ import { isFinePointer, prefersReducedMotion } from "@/hooks/useInView";
  */
 export function Reveal({
   children,
-  delay = 0,
   className,
   as: Tag = "div",
-  onVisible: _onVisible,
-  revealOnScroll = false,
 }: {
   children: ReactNode;
   delay?: number;
