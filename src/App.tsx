@@ -24,6 +24,7 @@ import Toast from "@/components/Toast";
 import { LEGAL_DOCS } from "@/data/legal";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { useInteractionEnhancements } from "@/hooks/useInteractionEnhancements";
+import SolarSystemIntro from "@/components/SolarSystemIntro";
 
 type PageKey =
   | "home" | "about" | "skills" | "projects" | "education"
@@ -89,6 +90,7 @@ function Site() {
       className="site-shell"
       style={{ background: "var(--site-bg)", color: "var(--site-fg)" }}
     >
+      <SolarSystemIntro />
       <a className="skip-link" href="#main" onClick={(event) => {
         event.preventDefault();
         const main = document.getElementById("main");
