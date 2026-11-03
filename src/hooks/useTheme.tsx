@@ -8,7 +8,7 @@ type ThemeValue = { theme: Theme; toggle: () => void };
 const ThemeCtx = createContext<ThemeValue>({ theme: "dark", toggle: () => {} });
 
 const KEY = "lavi-theme";
-const THEME_COLOURS: Record<Theme, string> = { light: "#f2f5f9", dark: "#0b0f17" };
+const THEME_COLOURS: Record<Theme, string> = { light: "#f2f5f9", dark: "#07090e" };
 
 const savedTheme = (): Theme | null => {
   try {
