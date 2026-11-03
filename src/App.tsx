@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import FloatingCompanion from "@/components/FloatingCompanion";
+import PageMascot from "@/components/PageMascot";
 import Home from "@/pages/Home";
 import Education from "@/pages/Education";
 import Experience from "@/pages/Experience";
@@ -97,6 +98,7 @@ function Site() {
       <ParticleField />
       <Cursor />
       <FloatingCompanion />
+      <PageMascot page={currentPage} caseRepo={route.kind === "case" ? route.repo : null} />
       <CommandPalette onNavigate={go} />
       <Toast />
 
