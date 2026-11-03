@@ -1159,3 +1159,132 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
     animation: none !important;
   }
 }
+
+
+/* ─────────────────── VISUAL POLISH: RICHER COLOUR + DEFINED EDGES ───────────────────
+   Keep the existing layout and interactions; give surfaces and information
+   groups a clearer visual identity with a restrained multi-accent palette. */
+:root {
+  --accent: #9bc8ed;
+  --hue-ice: #9bc8ed;
+  --hue-violet: #b7a6ed;
+  --hue-mint: #8fd1b2;
+  --hue-rose: #ee9ca5;
+  --hue-amber: #e8bd7e;
+  --hue-teal: #79c9c2;
+  --accent-soft: rgba(155, 200, 237, 0.18);
+  --accent-faint: rgba(155, 200, 237, 0.09);
+  --line: rgba(174, 196, 224, 0.14);
+  --line-strong: rgba(174, 196, 224, 0.25);
+  --highlight: rgba(255, 255, 255, 0.085);
+  --ambient-a: rgba(155, 200, 237, 0.085);
+  --ambient-b: rgba(183, 166, 237, 0.035);
+  --cursor-aura-a: rgba(155, 200, 237, 0.10);
+  --cursor-aura-b: rgba(121, 201, 194, 0.035);
+}
+[data-theme="light"] {
+  --accent: #356f9e;
+  --hue-ice: #477eae;
+  --hue-violet: #7962b4;
+  --hue-mint: #39866a;
+  --hue-rose: #b85c68;
+  --hue-amber: #a56c2c;
+  --hue-teal: #287f79;
+  --accent-soft: rgba(53, 111, 158, 0.13);
+  --accent-faint: rgba(53, 111, 158, 0.065);
+  --line: rgba(48, 76, 110, 0.13);
+  --line-strong: rgba(48, 76, 110, 0.23);
+  --highlight: rgba(255, 255, 255, 0.98);
+  --ambient-a: rgba(101, 157, 207, 0.12);
+  --ambient-b: rgba(145, 119, 199, 0.055);
+  --cursor-aura-a: rgba(53, 111, 158, 0.075);
+  --cursor-aura-b: rgba(57, 134, 106, 0.025);
+}
+
+/* More visible, layered page colour without introducing large gradients
+   behind text or changing the existing section layout. */
+.site-shell::before {
+  background:
+    radial-gradient(ellipse 48% 34% at 8% 7%, color-mix(in srgb, var(--hue-ice) 17%, transparent), transparent 72%),
+    radial-gradient(ellipse 42% 38% at 92% 34%, color-mix(in srgb, var(--hue-violet) 12%, transparent), transparent 74%),
+    radial-gradient(ellipse 46% 34% at 72% 94%, color-mix(in srgb, var(--hue-mint) 10%, transparent), transparent 72%);
+  opacity: 1;
+}
+[data-theme="dark"] .site-shell::before {
+  background:
+    radial-gradient(ellipse 48% 34% at 8% 7%, rgba(83, 139, 190, 0.13), transparent 72%),
+    radial-gradient(ellipse 42% 38% at 92% 34%, rgba(126, 94, 180, 0.10), transparent 74%),
+    radial-gradient(ellipse 46% 34% at 72% 94%, rgba(58, 139, 119, 0.08), transparent 72%);
+}
+
+/* Crisp outlines and a quiet inner edge make existing boxes feel intentional. */
+.ui-surface, .glass, .ui-surface-strong, .glass-dark,
+.project-card, .home-skill-card, .quick-card, .idea-panel,
+.funfact, .journey-detail, .architecture-panel {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md), inset 0 1px 0 var(--highlight);
+}
+.ui-surface, .glass, .project-card, .home-skill-card,
+.quick-card, .idea-panel, .funfact {
+  position: relative;
+}
+.project-card, .home-skill-card, .quick-card {
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 34%, var(--line));
+  border-top: 2px solid var(--card-accent, var(--accent));
+  background-image: linear-gradient(145deg,
+    color-mix(in srgb, var(--card-accent, var(--accent)) 9%, transparent),
+    transparent 58%);
+}
+.quick-card:nth-child(2) { border-color: color-mix(in srgb, var(--hue-mint) 36%, var(--line)); border-top-color: var(--hue-mint); }
+.quick-card:nth-child(3) { border-color: color-mix(in srgb, var(--hue-violet) 36%, var(--line)); border-top-color: var(--hue-violet); }
+.quick-card:nth-child(4) { border-color: color-mix(in srgb, var(--hue-amber) 36%, var(--line)); border-top-color: var(--hue-amber); }
+.section-divider-line {
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+.section-divider-mark {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.ui-row, .ui-tag, .chip, .ui-tech-tile, .ui-tile {
+  border-color: var(--line-strong);
+}
+.ui-row:hover, .ui-icon-button:hover, .ui-btn-quiet:hover {
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--line-strong));
+}
+.ui-nav, .ui-nav-shell, .ui-menu-panel {
+  border-color: var(--line-strong);
+}
+.project-tag {
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.featured-build, .case-header, .architecture-panel {
+  border-color: color-mix(in srgb, var(--project-accent, var(--accent)) 48%, var(--line));
+}
+.architecture-panel {
+  box-shadow: var(--shadow-md), inset 0 1px 0 var(--highlight);
+}
+[data-theme="light"] .ui-surface,
+[data-theme="light"] .glass,
+[data-theme="light"] .project-card,
+[data-theme="light"] .home-skill-card,
+[data-theme="light"] .quick-card,
+[data-theme="light"] .idea-panel,
+[data-theme="light"] .funfact {
+  border-color: color-mix(in srgb, var(--accent) 17%, rgba(48,76,110,0.10));
+}
+[data-theme="light"] .project-card,
+[data-theme="light"] .home-skill-card,
+[data-theme="light"] .quick-card {
+  box-shadow: 0 1px 3px rgba(27,36,50,0.045), 0 12px 28px -20px rgba(27,36,50,0.22), inset 0 1px 0 rgba(255,255,255,0.96);
+}
+@media (hover: hover) and (pointer: fine) {
+  .ui-surface:hover, .glass:hover, .project-card:hover,
+  .home-skill-card:hover, .quick-card:hover, .funfact:hover {
+    border-color: color-mix(in srgb, var(--accent) 42%, var(--line-strong));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-shell::before { transition: none !important; }
+}
