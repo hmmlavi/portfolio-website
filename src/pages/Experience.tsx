@@ -5,6 +5,7 @@ import { EXPERIENCE } from "@/data/content";
 import { useTheme } from "@/hooks/useTheme";
 import { accent, colorFor } from "@/data/palette";
 import { cn } from "@/utils/cn";
+import PageMascot from "@/components/PageMascot";
 
 export default function Experience() {
   const { theme } = useTheme();
@@ -20,6 +21,7 @@ export default function Experience() {
       icon={<BriefcaseBusiness className="w-5 h-5" style={{ color: mint }} aria-hidden="true" />}
       intro="The dated internship is listed separately from self-directed projects and selected public repositories."
     >
+      <div className="flex justify-end -mt-8 mb-4"><PageMascot pose="work" compact /></div>
       <div className="flex flex-col gap-8 relative">
         {/* spatial vertical connector */}
         <div className="absolute left-[39px] top-10 bottom-10 w-px bg-white/5 hidden md:block" />
