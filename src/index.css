@@ -1032,3 +1032,96 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 @keyframes buddy-wave { 0%,100% { transform: rotate(-20deg) translateZ(4px); } 50% { transform: rotate(-105deg) translateZ(4px); } }
 @media (max-width: 640px) { .floating-companion { right: 10px; bottom: max(10px, env(safe-area-inset-bottom)); } .companion-presence { transform: scale(.82); transform-origin: bottom right; margin-top: -22px; margin-bottom: -15px; } .companion-toggle { min-height: 30px; } .companion-bubble { right: 0; bottom: 133px; } }
 @media (prefers-reduced-motion: reduce) { .buddy-3d, .buddy-sparkle, .mood-excited .arm-right { animation: none !important; } }
+
+
+/* Companion layout refinement: compact footprint and an always-accessible switch. */
+.floating-companion {
+  position: fixed !important;
+  z-index: 9999 !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  width: 94px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0 !important;
+  pointer-events: none !important;
+  isolation: isolate;
+}
+.floating-companion .companion-presence {
+  order: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  width: 94px !important;
+  height: 88px !important;
+  display: grid !important;
+  place-items: end center !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+}
+.floating-companion .buddy-3d {
+  transform: scale(.58) rotateY(-13deg) !important;
+  transform-origin: bottom center !important;
+  margin-bottom: -57px !important;
+  animation: buddy-hover-compact 3.8s ease-in-out infinite !important;
+}
+@keyframes buddy-hover-compact {
+  0%, 100% { transform: translate3d(0,0,0) scale(.58) rotateY(-13deg) rotateZ(-1deg); }
+  50% { transform: translate3d(0,-4px,0) scale(.58) rotateY(9deg) rotateZ(1deg); }
+}
+.floating-companion .companion-bubble {
+  position: absolute !important;
+  z-index: 3 !important;
+  right: 0 !important;
+  bottom: 82px !important;
+  width: min(224px, calc(100vw - 34px)) !important;
+  max-width: 224px !important;
+  padding: 9px 11px !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  pointer-events: none !important;
+}
+.floating-companion .companion-toggle {
+  order: 2 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 30px !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.22) !important;
+}
+@media (max-width: 640px) {
+  .floating-companion {
+    right: max(8px, env(safe-area-inset-right)) !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    width: 82px !important;
+  }
+  .floating-companion .companion-presence {
+    width: 82px !important;
+    height: 76px !important;
+  }
+  .floating-companion .buddy-3d {
+    transform: scale(.51) rotateY(-13deg) !important;
+    margin-bottom: -66px !important;
+  }
+  @keyframes buddy-hover-compact {
+    0%, 100% { transform: translate3d(0,0,0) scale(.51) rotateY(-13deg) rotateZ(-1deg); }
+    50% { transform: translate3d(0,-3px,0) scale(.51) rotateY(9deg) rotateZ(1deg); }
+  }
+  .floating-companion .companion-bubble {
+    bottom: 72px !important;
+    width: min(210px, calc(100vw - 24px)) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-companion .buddy-3d,
+  .floating-companion .buddy-sparkle,
+  .floating-companion .mood-excited .buddy-arm {
+    animation: none !important;
+  }
+}
