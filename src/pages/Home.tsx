@@ -7,7 +7,6 @@ import {
 import { accent, alpha, colorFor, type AccentName } from "@/data/palette";
 import ProjectCard from "@/components/ProjectCard";
 import SectionDivider from "@/components/SectionDivider";
-import { useScrollReveals } from "@/hooks/useScrollReveals";
 import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/utils/cn";
 
@@ -66,7 +65,6 @@ export default function Home() {
   const light = theme === "light";
   const contact = accent("rose", light);
 
-  useScrollReveals();
 
   return (
     <div className="relative">
