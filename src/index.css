@@ -1305,3 +1305,13 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 @keyframes solar-fade-in{from{opacity:0}to{opacity:1}}
 @media(max-width:640px){.solar-intro-caption{font-size:9px;letter-spacing:.12em;bottom:84px}.solar-intro-hud{font-size:9px;letter-spacing:.12em}}
 @media(prefers-reduced-motion:reduce){.solar-intro{animation:none}.solar-live-dot{animation:none}}
+
+
+/* Real OpenStreetMap hand-off during the India zoom */
+.solar-india-map{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:0;animation:solar-map-arrive 1.8s cubic-bezier(.2,.75,.2,1) .15s forwards;transform-origin:52% 50%;background:#dce4dc}
+.solar-india-map iframe{display:block;width:100%;height:100%;border:0;filter:saturate(.92) contrast(1.02)}
+.solar-map-credit{position:absolute;right:12px;bottom:8px;padding:4px 8px;border-radius:5px;background:rgba(255,255,255,.82);color:#26352c;font:10px/1.4 system-ui,sans-serif}
+.solar-intro-canvas{z-index:2;pointer-events:none}
+.solar-intro-hud,.solar-intro-caption,.solar-intro-skip{z-index:3}
+@keyframes solar-map-arrive{0%{opacity:0;transform:scale(1.45);filter:blur(10px)}65%{opacity:.92;filter:blur(0)}100%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.solar-india-map{animation:none;opacity:1;transform:none}}
