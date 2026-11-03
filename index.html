@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lakshit Singh Saini — Computer Science student and developer building Android apps, web tools and desktop software. Public projects, case studies and contact details." />
+    <meta name="author" content="Lakshit Singh Saini" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b0f17" />
+    <title>Lakshit Singh Saini — Computer Science Student &amp; Developer</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lakshit Singh Saini" />
+    <meta property="og:title" content="Lakshit Singh Saini — Computer Science Student &amp; Developer" />
+    <meta property="og:description" content="Android apps, web tools and desktop software — public projects, technical case studies and contact details." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Lakshit Singh Saini — Computer Science Student &amp; Developer" />
+    <meta name="twitter:description" content="Android apps, web tools and desktop software — public projects, technical case studies and contact details." />
+    <!-- No canonical URL and no absolute og:image: the production domain is not
+         configured in this repository, so guessing either would be misleading.
+         Add both here (and a sitemap) once the real domain is confirmed. -->
+
+    <!-- favicons (PNG is the primary; the inline SVG is a single-file fallback) -->
+    <link rel="icon" type="image/png" sizes="160x160" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="160x160" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%23ffffff22' stroke-width='2'/%3E%3Ctext x='32' y='45' font-family='Arial Black, sans-serif' font-size='34' font-weight='900' fill='%23fff' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Apply the saved theme, or the OS preference, before first paint. -->
+    <script>
+      (function () {
+        var t = null;
+        try {
+          var saved = localStorage.getItem("lavi-theme");
+          if (saved === "light" || saved === "dark") t = saved;
+        } catch (e) {}
+        if (!t) {
+          t = "dark";
+          if (typeof window.matchMedia === "function") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+        }
+        document.documentElement.dataset.theme = t;
+        document.documentElement.style.colorScheme = t;
+        var colour = t === "light" ? "#f2f5f9" : "#0b0f17";
+        document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+          meta.setAttribute("content", colour);
+          meta.removeAttribute("media");
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
