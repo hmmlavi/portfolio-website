@@ -1,215 +1,352 @@
 <div align="center">
 
-# LAKSHIT — PORTFOLIO
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0:101827,45:243b55,100:6b5b95&text=LAKSHIT%20SAINI&fontColor=ffffff&fontSize=52&fontAlignY=38&animation=fadeIn&desc=Developer%20%E2%80%A2%20Builder%20%E2%80%A2%20Curious%20Mind&descAlignY=60&descSize=16" alt="Lakshit Saini — developer portfolio banner" />
 
-### A little corner of the internet where ideas turn into things.
+<a href="https://lakshitss.vercel.app/">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=2800&pause=900&color=9B9FE8&center=true&vCenter=true&width=650&lines=Hey%2C+I'm+Lakshit+%F0%9F%91%8B;Computer+Science+%26+Engineering+student;Building+web%2C+desktop+%26+Android+apps;Turning+ideas+into+working+software+%E2%9C%A8" alt="Animated introduction" />
+</a>
 
-**Personal portfolio · Selected projects · Engineering notes · Ways to connect**
+<p>
+<a href="https://lakshitss.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-Visit-8B83D7?style=for-the-badge" alt="Visit portfolio" /></a>
+<a href="https://github.com/hmmlavi"><img src="https://img.shields.io/badge/GitHub-@hmmlavi-24292f?style=for-the-badge&logo=github" alt="GitHub profile" /></a>
+<a href="https://www.linkedin.com/in/lakshitsinghsaini/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn" /></a>
+</p>
 
-[![React](https://img.shields.io/badge/React-19-149ECA?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/hmmlavi/portfolio-website/actions)
-
-[**Live portfolio**](https://lakshitss.vercel.app/) · [**GitHub profile**](https://github.com/hmmlavi) · [**LinkedIn**](https://www.linkedin.com/in/lakshitsinghsaini/)
-
-*Designed and developed by **Lakshit Singh Saini (Lavi)**.*
+<sub>Personal portfolio · Selected projects · Skills · Journey · Contact</sub>
 
 </div>
 
 ---
 
-## Overview
+<div align="center">
 
-This is my personal developer portfolio: a home for the products I build, technologies I explore, work I've done and ideas I'm curious about.
+### ✦ A little space on the internet, built around what I make.
 
-The site is a React + TypeScript single-page application built with Vite and Tailwind CSS. It uses hash-based navigation, dedicated project case studies, light and dark themes, and a compact single-file production build.
+I’m **Lakshit Singh Saini** — a Computer Science & Engineering undergraduate interested in software development, thoughtful interfaces and useful technology. I enjoy exploring an idea, turning it into a working product, and learning what it takes to make it better.
 
-The goal is to keep the experience personal, responsive and useful without making the interface heavier than it needs to be.
+<sub>Currently building, experimenting and learning — one project at a time.</sub>
 
-## What's inside
+</div>
 
-| Section | Description |
-| --- | --- |
-| Home | Introduction, capabilities, selected work and interests |
-| About | Background, journey, fun facts and FAQs |
-| Skills | Technologies grouped by development area |
-| Projects | Searchable project archive and case studies |
-| Education & Experience | Academic background and practical work |
-| Achievements | Awards, certificates and learning milestones |
-| GitHub | Public profile, repository and contribution information |
-| Contact | Contact options and social links |
-| Quick View | Compact portfolio overview |
+## 🪄 Inside the portfolio
 
-### Interaction details
+<table>
+<tr>
+<td width="50%" valign="top">
 
-- Light/dark theme with system preference support.
-- Keyboard-accessible command palette and navigation.
-- Developer terminal-style interaction.
-- Dedicated project case-study routes.
-- Responsive layouts and mobile navigation.
-- Copy feedback for contact details.
-- GitHub data loading, timeout, rate-limit and error states.
-- Reduced-motion-aware interaction effects.
+### 🏠 Home
+A quick introduction, selected work, areas of interest and a snapshot of what I'm building.
 
-## Technology
+### 👨‍💻 About
+My background, learning journey, interests and a few details beyond code.
 
-- **React 19** and **TypeScript 5** — application UI and type safety.
-- **Vite 7** — development server and production bundling.
-- **Tailwind CSS 4** — utility styling through the official Vite plugin.
-- **Lucide React** and **React Icons** — iconography.
-- **clsx** and **tailwind-merge** — conditional and conflict-aware class composition.
-- **Node.js test runner** and **jsdom** — automated regression and DOM smoke tests.
-- **GitHub Actions** — automated verification on pushes and pull requests.
+### 🧰 Skills
+Technologies and tools grouped by the kind of work they help me do.
 
-## Run locally
+### 🚀 Projects
+A searchable project archive with individual case studies, context and implementation details.
 
-### Requirements
+</td>
+<td width="50%" valign="top">
 
-- Node.js 22 or newer.
-- npm (included with Node.js).
-- Git.
+### 🎓 Education & Experience
+Academic background and practical experience, presented with context.
 
-```bash
+### 🏆 Achievements
+Competition results, recognition, certificates and learning milestones.
+
+### 🐙 GitHub
+A dedicated view of public repositories and contribution information, powered by live external data where available.
+
+### ✉️ Contact
+Ways to connect, collaborate or get in touch.
+
+</td>
+</tr>
+</table>
+
+## 🌌 A few things to explore
+
+- **Theme switcher** — light and dark appearances, with system preference support.
+- **Command palette** — keyboard-friendly navigation for moving around the site.
+- **Developer terminal** — a terminal-inspired interaction tucked into the experience.
+- **Project case studies** — dedicated pages for selected builds.
+- **Quick View** — a compact overview designed for a fast introduction.
+- **Responsive navigation** — layouts and navigation adapted for smaller screens.
+- **GitHub data states** — loading, timeout, rate-limit and error handling for external requests.
+- **Reduced motion support** — motion-sensitive visitors can ask the interface to tone down animations.
+- **Small interaction details** — copy feedback, focus states and thoughtful transitions.
+
+## 🧩 Selected projects
+
+A few builds from the project archive. Open each repository to explore its code and documentation.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🗂️ Sortify Desktop
+**A safer way to organise files.**
+
+A Windows desktop app that suggests meaningful filenames, lets you review changes before applying them and keeps a local rename history.
+
+**Python** · **PySide6** · **SQLite**
+
+[↗ View repository](https://github.com/hmmlavi/sortify-desktop)
+
+</td>
+<td width="50%" valign="top">
+
+### 🛠️ FacilityFix
+**Campus issue reporting and tracking.**
+
+A Flask application for reporting facility problems and following them through a role-based workflow.
+
+**Python** · **Flask** · **SQLite**
+
+[↗ View repository](https://github.com/hmmlavi/FacilityFix)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📚 Pustakalaya LMS
+**A library management system.**
+
+A local-first system for cataloguing, memberships, circulation, reservations, fines and staff workflows.
+
+**Python** · **Flask** · **SQLite**
+
+[↗ View repository](https://github.com/hmmlavi/Pustakalaya-LMS)
+
+</td>
+<td width="50%" valign="top">
+
+### 🐍 Sarp
+**A 3D Snake game for the browser.**
+
+A Three.js-powered game with keyboard and touch controls, special apples and local high scores.
+
+**React** · **TypeScript** · **Three.js** · **Supabase**
+
+[↗ View repository](https://github.com/hmmlavi/Sarp)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📱 SaBuddy
+**A social content planning workspace.**
+
+An Android app for organising content ideas, drafts, calendars and saved material, with optional Gemini generation.
+
+**Kotlin** · **Jetpack Compose** · **Room**
+
+[↗ View repository](https://github.com/hmmlavi/SaBuddy)
+
+</td>
+<td width="50%" valign="top">
+
+### 🌱 Veylo
+**A private habit tracker.**
+
+An offline-first habit tracking experience with streaks, a calendar, progress insights and a rule-based planner.
+
+**React** · **TypeScript** · **Capacitor**
+
+[↗ View repository](https://github.com/hmmlavi/Veylo)
+
+</td>
+</tr>
+</table>
+
+<p align="center">
+<a href="https://lakshitss.vercel.app/#/projects">Explore all projects →</a>
+</p>
+
+## ⚙️ The technology shelf
+
+These are technologies represented across the portfolio and its projects — not a claim of equal proficiency in every tool.
+
+<div align="center">
+
+**Languages**
+
+<img src="https://skillicons.dev/icons?i=python,c,cpp,js,ts,html,css,kotlin&perline=8" alt="Python, C, C++, JavaScript, TypeScript, HTML, CSS and Kotlin icons" />
+
+**Frontend & application development**
+
+<img src="https://skillicons.dev/icons?i=react,nextjs,vite,tailwind,threejs,androidstudio&perline=8" alt="React, Next.js, Vite, Tailwind CSS, Three.js and Android Studio icons" />
+
+**Backend, data & tools**
+
+<img src="https://skillicons.dev/icons?i=nodejs,express,flask,postgres,supabase,sqlite,git,github,vercel&perline=9" alt="Node.js, Express, Flask, PostgreSQL, Supabase, SQLite, Git, GitHub and Vercel icons" />
+
+</div>
+
+## 🛠️ Built with
+
+The portfolio itself is a React + TypeScript single-page application.
+
+| Part | Technology |
+|:--|:--|
+| UI | React 19 |
+| Language | TypeScript 5 |
+| Build tooling | Vite 7 |
+| Styling | Tailwind CSS 4 |
+| Icons | Lucide React, React Icons |
+| Class utilities | clsx, tailwind-merge |
+| Testing | Node.js test runner, jsdom |
+| CI | GitHub Actions |
+| Hosting | Vercel |
+
+## 🏃 Run it locally
+
+Want to explore the code or run your own copy? Let's go.
+
+### Prerequisites
+
+- [Node.js 22+](https://nodejs.org/) (npm included)
+- [Git](https://git-scm.com/)
+
+### 1. Clone the repository
+
+~~~bash
 git clone https://github.com/hmmlavi/portfolio-website.git
 cd portfolio-website
+~~~
+
+### 2. Install dependencies
+
+~~~bash
 npm ci
+~~~
+
+### 3. Start the development server
+
+~~~bash
 npm run dev
-```
+~~~
 
-Vite prints the local development URL. Open it in a browser.
+Open the local URL printed by Vite in your browser. You're in! 🎉
 
-### Production build
+### 4. Build for production
 
-```bash
+~~~bash
 npm run build
 npm run preview
-```
+~~~
 
-The production output is generated in `dist/`. Deploy the complete directory to the configured static host.
+The production build is generated in **dist/**.
 
-## Quality checks
+## 🧪 Quality checks
 
-Run the full verification suite before publishing:
+Run the complete verification workflow before publishing:
 
-```bash
+~~~bash
 npm run verify
-```
+~~~
 
-Individual commands:
+| Command | Purpose |
+|:--|:--|
+| **npm run typecheck** | Check TypeScript without emitting files |
+| **npm test** | Typecheck and run regression tests |
+| **npm run build** | Create the production build |
+| **npm run test:smoke** | Build and run production-bundle smoke tests |
+| **npm run verify** | Run tests and production smoke checks |
 
-| Command | What it checks |
-| --- | --- |
-| `npm run typecheck` | TypeScript without emitting files |
-| `npm test` | Typecheck and Node regression tests |
-| `npm run build` | Production Vite build |
-| `npm run test:smoke` | Build and run production-bundle smoke tests |
-| `npm run verify` | Tests followed by production smoke tests |
+GitHub Actions also runs **npm run verify** for pushes to **main** and pull requests targeting **main**.
 
-The smoke suite uses jsdom to exercise routes, themes, key interactions, links, images, focus behaviour and console-error handling. jsdom does not provide a real browser layout engine, so it cannot replace manual responsive, visual, touch or cross-browser checks.
+> **A note on testing:** the smoke tests use jsdom. They help catch regressions in routes, themes, interactions, links, images and console errors, but they do not replace real-browser visual, responsive, touch or cross-browser testing.
 
-GitHub Actions runs `npm run verify` for pushes to `main` and pull requests targeting `main`.
+## 🗺️ Project structure
 
-## Live GitHub data
-
-The GitHub area uses public GitHub API data. Contribution activity relies on a separate third-party data service.
-
-The implementation includes response validation, a short-lived cache, shared in-flight requests, bounded retry behaviour and explicit loading/error states. Public API availability and rate limits remain outside the site's control. No personal access token is intended to be shipped in the browser bundle.
-
-## Repository layout
-
-```text
-.
-├── .github/workflows/   # CI verification
+~~~text
+portfolio-website/
+├── .github/
+│   └── workflows/          # GitHub Actions
 ├── public/
-│   ├── achievements/    # Certificate and event images
-│   ├── projects/        # Project preview images
-│   ├── favicon.png
-│   ├── robots.txt
-│   └── sitemap.xml
+│   ├── achievements/       # Certificates and event photographs
+│   ├── projects/           # Project preview images
+│   └── ...                 # Public assets and SEO files
 ├── src/
-│   ├── components/      # Reusable UI components
-│   ├── data/            # Portfolio content and case-study data
-│   ├── hooks/           # Theme and interaction hooks
-│   ├── pages/           # Route-level pages
-│   ├── utils/            # Shared utilities
+│   ├── components/         # Reusable interface components
+│   ├── data/               # Portfolio content and case-study data
+│   ├── hooks/              # Theme and interaction hooks
+│   ├── pages/              # Page-level views
+│   ├── utils/              # Shared utilities
 │   ├── App.tsx
 │   ├── index.css
 │   └── main.tsx
-├── tests/               # Regression and smoke tests
+├── tests/                  # Regression and smoke tests
 ├── index.html
 ├── package.json
 ├── package-lock.json
 ├── tsconfig.json
 └── vite.config.ts
-```
+~~~
 
-### Content locations
+### 🧭 Main page routes
 
-| File | Responsibility |
-| --- | --- |
-| `src/data/content.ts` | Navigation, links, skills, projects and FAQs |
-| `src/data/achievements.ts` | Awards and certificates |
-| `src/data/projectExtras.ts` | Project filters and case-study details |
-| `src/data/journey.ts` | Journey timeline |
-| `src/data/portfolioUpdates.ts` | Current-work and update entries |
-| `src/data/legal.ts` | Legal information content |
-
-## Routes
-
-Navigation is hash-based; these are client-side routes within the same HTML document.
+The app uses hash-based client-side navigation.
 
 | Route | Page |
-| --- | --- |
-| `#/` | Home |
-| `#/about` | About |
-| `#/skills` | Skills |
-| `#/projects` | Project archive |
-| `#/projects/sortify-desktop` | Sortify Desktop case study |
-| `#/projects/Pustakalaya-LMS` | Pustakalaya LMS case study |
-| `#/projects/FacilityFix` | FacilityFix case study |
-| `#/education` | Education |
-| `#/experience` | Experience |
-| `#/achievements` | Achievements |
-| `#/github` | GitHub |
-| `#/contact` | Contact |
-| `#/quick-view` | Recruiter quick view |
+|:--|:--|
+| **#/** | Home |
+| **#/about** | About |
+| **#/skills** | Skills |
+| **#/projects** | Project archive |
+| **#/projects/sortify-desktop** | Sortify case study |
+| **#/projects/Pustakalaya-LMS** | Pustakalaya LMS case study |
+| **#/projects/FacilityFix** | FacilityFix case study |
+| **#/education** | Education |
+| **#/experience** | Experience |
+| **#/achievements** | Achievements |
+| **#/github** | GitHub |
+| **#/contact** | Contact |
+| **#/quick-view** | Quick View |
 
-Legal pages are available at `#/privacy`, `#/terms`, `#/cookies` and `#/refunds`. Unknown routes show the not-found page.
+Additional legal routes: **#/privacy**, **#/terms**, **#/cookies** and **#/refunds**.
 
-## SEO and hosting notes
+## 🧠 A few engineering choices
 
-The public site is hosted at [lakshitss.vercel.app](https://lakshitss.vercel.app/). The document declares that canonical URL and the sitemap lists the public homepage. Because the application uses hash fragments, individual hash routes are not separate crawlable URLs; the homepage is the canonical indexable document.
+- **Content stays organised:** portfolio information lives in focused data modules instead of being scattered across page components.
+- **Motion has a purpose:** transitions and animations should make the experience clearer, not get in the way.
+- **External data can fail:** GitHub requests have explicit loading and error states, bounded retries and short-lived caching.
+- **Privacy matters:** no GitHub personal access token is intended to be exposed in the browser bundle.
+- **Accessibility matters:** keyboard navigation, focus behaviour and reduced-motion preferences are part of the experience.
+- **Keep it honest:** project descriptions and achievements should reflect actual work, not inflated metrics.
 
-The repository includes a Vercel configuration for baseline browser security headers. Hosting-provider behaviour should still be checked against the deployed response headers after deployment.
+## 🔗 Find me around the internet
 
-## Design & engineering principles
+<div align="center">
 
-- **Preserve the experience:** engineering improvements should not needlessly change the visual identity.
-- **Useful over flashy:** interactions should support navigation or understanding.
-- **Honest data:** no invented project metrics, certificates or contribution counts.
-- **Graceful failure:** external APIs can fail; the interface should communicate that clearly.
-- **Maintainability:** keep portfolio content in focused data modules.
-- **Ship carefully:** typecheck, regression tests, production build and smoke tests are part of the workflow.
+<a href="https://github.com/hmmlavi"><img src="https://img.shields.io/badge/GitHub-hmmlavi-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+<a href="https://www.linkedin.com/in/lakshitsinghsaini/"><img src="https://img.shields.io/badge/LinkedIn-Lakshit_Singh_Saini-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://x.com/Lakshits27"><img src="https://img.shields.io/badge/X-@Lakshits27-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
+<a href="https://www.instagram.com/lakshitsinghsaini/"><img src="https://img.shields.io/badge/Instagram-@lakshitsinghsaini-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
+<a href="mailto:lakshitsinghsaini@gmail.com"><img src="https://img.shields.io/badge/Email-Say_hello-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 
-## Feedback
+<br />
 
-Found a bug or have a thoughtful improvement?
+**Want to see the actual thing?**
 
-- [Open an issue](https://github.com/hmmlavi/portfolio-website/issues)
-- [Browse the repository](https://github.com/hmmlavi/portfolio-website)
-- [Connect on LinkedIn](https://www.linkedin.com/in/lakshitsinghsaini/)
-- [Email Lakshit](mailto:lakshitsinghsaini@gmail.com)
+<a href="https://lakshitss.vercel.app/"><img src="https://img.shields.io/badge/OPEN_THE_LIVE_PORTFOLIO-8B83D7?style=for-the-badge&logo=vercel&logoColor=white" alt="Open live portfolio" /></a>
 
-## About
+</div>
 
-**Lakshit Singh Saini (Lavi)** is a Computer Science student interested in building practical software across web, desktop and Android, and exploring the intersection of software engineering and AI.
+---
 
-| Platform | Link |
-| --- | --- |
-| GitHub | [@hmmlavi](https://github.com/hmmlavi) |
-| LinkedIn | [Lakshit Singh Saini](https://www.linkedin.com/in/lakshitsinghsaini/) |
-| Instagram | [@lakshitsinghsaini](https://www.instagram.com/lakshitsinghsaini/) |
-| X | [@Lakshits27](https://x.com/Lakshits27) |
-| Email | [lakshitsinghsaini@gmail.com](mailto:lakshitsinghsaini@gmail.com) |
+<div align="center">
+
+### Made with curiosity, code and a lot of iterations. ☕
+
+**© Lakshit Singh Saini**
+
+<sub>If something here catches your eye, feel free to explore the code or say hello.</sub>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=110&color=0:6b5b95,55:243b55,100:101827" alt="" />
+
+</div>
