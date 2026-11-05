@@ -46,7 +46,7 @@ export default function Experience() {
                          </div>
                          <div className="min-w-0">
                             <p className="font-mono text-[9px] tracking-[0.24em] uppercase mb-2" style={{ color: c }}>
-                              {e.kind === "formal" ? "Internship · approximately six weeks" : "Independent · self-directed"}
+                              {e.kind === "formal" ? "Internship · approximately six weeks" : e.kind === "learning" ? "Hands-on cloud learning" : "Independent · project-based"}
                             </p>
                             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-1">{e.role}</h2>
                             <p className="text-lg font-medium text-white/50">{e.org}</p>
