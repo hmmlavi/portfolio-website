@@ -417,7 +417,7 @@ export type ExperienceEntry = {
 export const EXPERIENCE: ExperienceEntry[] = [
   {
     role: "Junior Software Developer Intern",
-    org: "YuvaIntern — by Henry Harvin",
+    org: "Independent Internship",
     kind: "formal",
     span: "1 October 2026 — 12 November 2026",
     points: [
