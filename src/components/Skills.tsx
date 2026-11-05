@@ -40,7 +40,7 @@ export default function Skills() {
                       </div>
                    </div>
 
-                   <ul className="space-y-2.5 mt-auto">
+                   <ul className="space-y-2.5">
                       {cat.skills.map((s) => (
                         <li key={s} className="skill-row flex items-center gap-3 px-2 py-1 -mx-2">
                            <span
