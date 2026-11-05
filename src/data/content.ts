@@ -407,7 +407,7 @@ export type ExperienceEntry = {
   role: string;
   org: string;
   /** formal = supervised employment / internship; independent = self-directed work */
-  kind: "formal" | "independent";
+  kind: "formal" | "independent" | "learning";
   span: string;
   points: string[];
   color: HexColor;
@@ -422,6 +422,31 @@ export const EXPERIENCE: ExperienceEntry[] = [
     span: "1 October 2026 — 12 November 2026",
     points: [
       "A Junior Software Developer internship running for approximately six weeks, from 1 October through 12 November 2026.",
+    ],
+    color: "#8fb3d1",
+    colorLight: "#2d5f88",
+  },
+  {
+    role: "Freelance Developer",
+    org: "Independent · Project-based",
+    kind: "independent",
+    span: "Project-based work",
+    points: [
+      "Work on software projects from the initial idea and requirements through implementation, testing and refinement.",
+      "Build across web, desktop and Android experiences, choosing tools and technologies to fit each project's needs.",
+      "Handle practical development work including user interfaces, application logic, data storage, API integration and debugging.",
+    ],
+    color: "#a49dc0",
+    colorLight: "#574b7c",
+  },
+  {
+    role: "Google Cloud Arcade — Hands-on Cloud Learning",
+    org: "Google Cloud",
+    kind: "learning",
+    span: "300+ labs · approximately 2 months",
+    points: [
+      "Completed more than 300 hands-on Google Cloud labs over approximately two months.",
+      "Built practical familiarity with cloud concepts and services through guided, task-based exercises.",
     ],
     color: "#8fb3d1",
     colorLight: "#2d5f88",
