@@ -1,4 +1,4 @@
-import { EDUCATION, EXPERIENCE, EXPLORING } from "@/data/content";
+import { EDUCATION, EXPLORING } from "@/data/content";
 
 /**
  * The About Me journey timeline is assembled ONLY from details already in the
@@ -39,22 +39,12 @@ export const JOURNEY: readonly JourneyStep[] = [
     ],
   },
   {
-    id: "internship",
-    era: "OCT—NOV 2026",
-    title: EXPERIENCE[0].role,
-    org: EXPERIENCE[0].org,
-    summary: "A Junior Software Developer internship with YuvaIntern — by Henry Harvin, scheduled for approximately six weeks.",
-    details: [...EXPERIENCE[0].points],
-  },
-  {
     id: "public-repositories",
     era: "PUBLIC PROJECTS",
-    title: EXPERIENCE[1].role,
-    org: EXPERIENCE[1].org,
+    title: "Independent Projects & Public Repositories",
+    org: "Self-directed · github.com/hmmlavi",
     summary: "Selected builds are published on GitHub with documentation and, where available, releases.",
-    // The independent entry covers projects and public publishing in one place,
-    // so the timeline quotes only the publishing point.
-    details: [EXPERIENCE[1].points[2]],
+    details: ["I design, build and maintain my own software — Android apps, web tools and desktop utilities — and publish selected work on GitHub."],
   },
   {
     id: "now",
