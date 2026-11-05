@@ -89,7 +89,7 @@ const fetchGitHub = (): Promise<Payload> => {
     requestJson(`https://api.github.com/users/${GITHUB_USER}`, controller.signal),
     requestJson(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`, controller.signal),
   ])
-    .then(([userResult, repoResult]) => {
+    .then(async ([userResult, repoResult]) => {
       // Wait for both requests to settle before releasing the in-flight lock;
       // an early failure must not allow a manual retry to duplicate its peer.
       if (userResult.status === "rejected") throw userResult.reason;
