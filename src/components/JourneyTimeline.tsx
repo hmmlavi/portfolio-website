@@ -12,7 +12,7 @@ const HUES: AccentName[] = ["ice", "teal", "violet", "amber", "mint"];
  * Clicking a milestone reveals genuine detail from the site's own data.
  */
 export default function JourneyTimeline({ light }: { light: boolean }) {
-  const [openId, setOpenId] = useState<string | null>(JOURNEY[0].id);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <div className="journey-card relative ui-surface rounded-[32px] p-6 md:p-9" data-journey-timeline>
