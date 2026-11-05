@@ -31,7 +31,7 @@ type RepoShape = {
   updated_at: string;
 };
 
-type Payload = { user: UserShape; repos: RepoShape[] };
+type Payload = { user: UserShape; repos: RepoShape[]; languageTotals: Record<string, number>; languageSource: "bytes" | "primary" };
 
 /** GitHub responses are untrusted JSON — narrow them with real checks. */
 const isRecord = (v: unknown): v is Record<string, unknown> =>
@@ -101,7 +101,31 @@ const fetchGitHub = (): Promise<Payload> => {
       const parsed = repoJson.map(toRepo).filter((repo): repo is RepoShape => repo !== null);
       if (repoJson.length && !parsed.length) throw new Error("invalid");
       // Forks are not my work, so every figure below counts owned repositories only.
-      const data: Payload = { user: profile, repos: parsed.filter(repo => !repo.fork) };
+      const ownedRepos = parsed.filter(repo => !repo.fork);
+      // GitHub's Languages endpoint reports actual bytes by language.
+      const languageResponses = await Promise.allSettled(
+        ownedRepos.map(repo => requestJson("https://api.github.com/repos/" + GITHUB_USER + "/" + encodeURIComponent(repo.name) + "/languages", controller.signal))
+      );
+      const byteTotals: Record<string, number> = {};
+      let successfulLanguageResponses = 0;
+      for (const response of languageResponses) {
+        if (response.status !== "fulfilled" || !isRecord(response.value)) continue;
+        successfulLanguageResponses += 1;
+        for (const [language, bytes] of Object.entries(response.value)) {
+          if (typeof bytes === "number" && Number.isFinite(bytes) && bytes > 0) byteTotals[language] = (byteTotals[language] ?? 0) + bytes;
+        }
+      }
+      const hasByteData = successfulLanguageResponses > 0 && Object.keys(byteTotals).length > 0;
+      const primaryTotals = ownedRepos.reduce<Record<string, number>>((totals, repo) => {
+        if (repo.language) totals[repo.language] = (totals[repo.language] ?? 0) + 1;
+        return totals;
+      }, {});
+      const data: Payload = {
+        user: profile,
+        repos: ownedRepos,
+        languageTotals: hasByteData ? byteTotals : primaryTotals,
+        languageSource: hasByteData ? "bytes" : "primary",
+      };
       cached = { data, expires: Date.now() + CACHE_MS };
       return data;
     })
@@ -120,6 +144,8 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
 
   const [user, setUser] = useState<UserShape | null>(null);
   const [repos, setRepos] = useState<RepoShape[]>([]);
+  const [languageTotals, setLanguageTotals] = useState<Record<string, number>>({});
+  const [languageSource, setLanguageSource] = useState<"bytes" | "primary">("bytes");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
@@ -134,6 +160,8 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
       if (warm) {
         setUser(warm.user);
         setRepos(warm.repos);
+        setLanguageTotals(warm.languageTotals);
+        setLanguageSource(warm.languageSource);
         setLoading(false);
         return () => { alive = false; };
       }
@@ -143,6 +171,8 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
         if (!alive) return;
         setUser(data.user);
         setRepos(data.repos);
+        setLanguageTotals(data.languageTotals);
+        setLanguageSource(data.languageSource);
         setLoading(false);
       })
       .catch((err: unknown) => {
@@ -154,17 +184,11 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
   }, [attempt]);
 
   const totalStars = repos.reduce((n, repo) => n + repo.stargazers_count, 0);
-  // Language shares use ONLY repositories GitHub has assigned a language to.
-  // Previously the denominator included `null` languages, so the bars could not
-  // add up to 100%.
-  const classified = repos.filter(repo => repo.language);
-  const langTotals = classified.reduce<Record<string, number>>((totals, repo) => {
-    const language = repo.language as string;
-    totals[language] = (totals[language] ?? 0) + 1;
-    return totals;
-  }, {});
-  const langList = Object.entries(langTotals)
-    .map(([name, amount]) => ({ name, amount, pct: (amount / classified.length) * 100 }))
+  // Prefer GitHub's actual language byte counts across all owned repositories.
+  // Fall back clearly to primary-language repository counts if unavailable.
+  const languageTotal = Object.values(languageTotals).reduce((sum, amount) => sum + amount, 0);
+  const langList = Object.entries(languageTotals)
+    .map(([name, amount]) => ({ name, amount, pct: languageTotal > 0 ? (amount / languageTotal) * 100 : 0 }))
     .sort((a, b) => b.amount - a.amount || a.name.localeCompare(b.name));
   const recentRepos = [...repos]
     .sort((a, b) => b.updated_at.localeCompare(a.updated_at))
@@ -250,7 +274,7 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
                   <div className={cn("p-7 rounded-[32px] h-full", "ui-surface")}>
                     <p className="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-2">All languages across repositories</p>
                     <p className="text-[11px] text-white/50 mb-6 leading-relaxed">
-                      All {langList.length} detected languages across {classified.length} fetched {classified.length === 1 ? "repository" : "repositories"}. Percentages represent the share of repositories using each primary language, not lines of code.
+                      {languageSource === "bytes" ? "Percentages use GitHub language byte counts across" : "GitHub language byte data was unavailable; percentages use primary-language repository counts across"} {repos.length} fetched {repos.length === 1 ? "repository" : "repositories"}. {langList.length} languages detected.
                     </p>
                     <div className="space-y-4">
                       {langList.map(lang => (
