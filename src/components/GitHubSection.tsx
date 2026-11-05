@@ -165,8 +165,7 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
   }, {});
   const langList = Object.entries(langTotals)
     .map(([name, amount]) => ({ name, amount, pct: (amount / classified.length) * 100 }))
-    .sort((a, b) => b.amount - a.amount || a.name.localeCompare(b.name))
-    .slice(0, 5);
+    .sort((a, b) => b.amount - a.amount || a.name.localeCompare(b.name));
   const recentRepos = [...repos]
     .sort((a, b) => b.updated_at.localeCompare(a.updated_at))
     .slice(0, 4);
@@ -249,9 +248,9 @@ export default function GitHubSection({ padded = false }: { padded?: boolean }) 
                 {/* Languages */}
                 <Reveal delay={200}>
                   <div className={cn("p-7 rounded-[32px] h-full", "ui-surface")}>
-                    <p className="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-2">Primary language by repository</p>
+                    <p className="font-mono text-[10px] tracking-widest uppercase text-white/40 mb-2">All languages across repositories</p>
                     <p className="text-[11px] text-white/50 mb-6 leading-relaxed">
-                      Top {langList.length} of {classified.length} fetched {classified.length === 1 ? "repository" : "repositories"} with a detected language. Shares are repository counts, not lines of code.
+                      All {langList.length} detected languages across {classified.length} fetched {classified.length === 1 ? "repository" : "repositories"}. Percentages represent the share of repositories using each primary language, not lines of code.
                     </p>
                     <div className="space-y-4">
                       {langList.map(lang => (
